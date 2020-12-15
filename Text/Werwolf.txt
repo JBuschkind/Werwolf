@@ -1,0 +1,4 @@
+Nacht n:
+	-Die Werwölfe erwachen alle gleichzeitig und wissen wer die anderen Werwölfe sind.
+	Die Werwölfe erwachen und suchen sich ihr Opfer
+	-Die Werwölfe stimmen für ein Opfer, welches zu Tagesanbruch stirbt

@@ -1,0 +1,9 @@
+Nacht n:
+	Die Hexe erwacht
+	-Wenn die Hexe noch ihren Heilungstrank hat:
+		Das heutige Opfer der Werwölfe ist [Opfer], möchtest du es beschützen?
+		-Ja/Nein
+	-Wenn die Hexe noch ihr Gift hat:
+		Möchtest du jemanden töten?
+		-Ja/Nein
+		-Wenn ja, wen?

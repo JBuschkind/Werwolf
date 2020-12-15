@@ -1,0 +1,3 @@
+Nacht n:
+	Die Dorfbewohner schlafen die Nacht durch
+

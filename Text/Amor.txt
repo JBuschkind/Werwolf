@@ -1,0 +1,8 @@
+Nacht 1:
+	Amor wählt die beiden Verliebten.
+	-Amor wählt 2 Spieler
+	Die Verliebten erblicken sich.
+	-Die Verliebten erfahren wer ihr Partner ist
+
+Nacht n:
+	Amor schläft die Nacht durch
