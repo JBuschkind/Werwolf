@@ -45,7 +45,7 @@ public class WerwolfServer extends WebSocketServer {
 	
 
 	public static void main(String[] args){
-		String host = "localhost";
+		String host = "5.189.138.180";
 		int port = 3001;
 		
 		WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
