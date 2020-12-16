@@ -7,7 +7,7 @@ import org.java_websocket.server.WebSocketServer;
 
 public class WerwolfServer extends WebSocketServer {
 
-	public SimpleServer(InetSocketAddress address) {
+	public WerwolfServer(InetSocketAddress address) {
 		super(address);
 	}
 
