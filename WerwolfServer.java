@@ -1,5 +1,6 @@
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.util.*;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -24,6 +25,11 @@ import javax.net.ssl.SSLContext;
 import javax.xml.bind.DatatypeConverter;
 import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
+String phase;
+HashMap<String,List<WebSocket>> Rollen;
+List<Websocket> connections;
+Hashmap<Websocket,String> names;
+
 public class WerwolfServer extends WebSocketServer {
 
 	public WerwolfServer(InetSocketAddress address) {
@@ -32,9 +38,10 @@ public class WerwolfServer extends WebSocketServer {
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		conn.send("Welcome to the server!"); //This method sends a message to the new client
+		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
 		broadcast( "new connection: " + handshake.getResourceDescriptor() ); //This method sends a message to all clients connected
 		System.out.println("new connection to " + conn.getRemoteSocketAddress());
+		connections.add(conn);
 	}
 
 	@Override
@@ -65,6 +72,7 @@ public class WerwolfServer extends WebSocketServer {
 
 	public static void main(String[] args){
 		String host = "busch.click";
+		phase = "lobby";
 		int port = 3001;
 		
 		WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
