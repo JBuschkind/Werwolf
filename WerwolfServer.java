@@ -25,12 +25,13 @@ import javax.net.ssl.SSLContext;
 import javax.xml.bind.DatatypeConverter;
 import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
-String phase;
-HashMap<String,List<WebSocket>> Rollen;
-List<Websocket> connections;
-Hashmap<Websocket,String> names;
 
 public class WerwolfServer extends WebSocketServer {
+
+	String phase;
+	HashMap<String,List<WebSocket>> Rollen;
+	List<Websocket> connections;
+	Hashmap<Websocket,String> names;
 
 	public WerwolfServer(InetSocketAddress address) {
 		super(address);
