@@ -1,6 +1,7 @@
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.*;
+import java.util.HashMap;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -29,9 +30,9 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 public class WerwolfServer extends WebSocketServer {
 
 	String phase;
-	HashMap<String,List<WebSocket>> Rollen;
-	List<Websocket> connections;
-	Hashmap<Websocket,String> names;
+	HashMap<String,LinkedList<WebSocket>> Rollen;
+	LinkedList<Websocket> connections;
+	Hashmap<Websocket,String> names = new LinkedList();
 
 	public WerwolfServer(InetSocketAddress address) {
 		super(address);
