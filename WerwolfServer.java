@@ -31,8 +31,8 @@ public class WerwolfServer extends WebSocketServer {
 
 	String phase;
 	HashMap<String,LinkedList<WebSocket>> Rollen;
-	LinkedList<Websocket> connections;
-	Hashmap<Websocket,String> names = new LinkedList();
+	LinkedList<WebSocket> connections;
+	Hashmap<WebSocket,String> names = new LinkedList();
 
 	public WerwolfServer(InetSocketAddress address) {
 		super(address);
