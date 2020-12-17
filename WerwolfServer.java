@@ -29,7 +29,7 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
 public class WerwolfServer extends WebSocketServer {
 
-	String phase;
+	static String phase;
 	HashMap<String,LinkedList<WebSocket>> Rollen;
 	LinkedList<WebSocket> connections;
 	Hashmap<WebSocket,String> names = new LinkedList();
