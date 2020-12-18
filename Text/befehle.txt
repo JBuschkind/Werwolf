@@ -1,0 +1,2 @@
+[addPlayer] fügt einen Spieler der Lobbyliste hinzu
+[subPlayer] entfernt einen Spieler der Lobbyliste
