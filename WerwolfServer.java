@@ -77,6 +77,13 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onMessage(WebSocket conn, String message) {
 		System.out.println("received message from "	+ conn.getRemoteSocketAddress() + ": " + message);
+		
+		switch(phase){
+		case lobby:
+			lobby(conn, message);
+			
+			
+		}	
 	}
 
 	@Override
@@ -202,4 +209,31 @@ public class WerwolfServer extends WebSocketServer {
 		return name;      
 		
 	} 
+	
+	public void start(){
+		
+	}
+	public void lobby(WebSocket conn, String message){
+		
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	}	
 }
