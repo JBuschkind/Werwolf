@@ -54,7 +54,7 @@ public class WerwolfServer extends WebSocketServer {
 		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
 		try{
 		connections.add(conn);	//Adds connection to List of all connections
-		} catch(NullPointerException e){
+		} catch(Exception e){
 				System.out.println(e);
 		}
 		names.put(conn,getRandomName()); //Gives the Player a random Name
