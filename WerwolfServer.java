@@ -79,7 +79,7 @@ public class WerwolfServer extends WebSocketServer {
 		System.out.println("received message from "	+ conn.getRemoteSocketAddress() + ": " + message);
 		
 		switch(phase){
-		case lobby:
+		case "lobby":
 			lobby(conn, message);
 			
 			
