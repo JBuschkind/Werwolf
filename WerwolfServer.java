@@ -36,6 +36,12 @@ public class WerwolfServer extends WebSocketServer {
 	HashMap<WebSocket,String> names;
 	static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 
+	public static String getRandomName() throws FileNotFoundException
+	{
+		Random rand = new Random();
+		return defaultNames[rand.nextInt(defaultNames.length)];      
+	}
+  
 	public WerwolfServer(InetSocketAddress address) {
 		super(address);
 	}
@@ -161,9 +167,5 @@ public class WerwolfServer extends WebSocketServer {
     return bytesArray;
   }
   
-   public static String getRandomName() throws FileNotFoundException
-  {
-    Random rand = new Random();
-    return defaultNames[rand.nextInt(defaultNames.length)];      
-  }
+   
 }
