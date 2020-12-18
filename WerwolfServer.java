@@ -82,6 +82,18 @@ public class WerwolfServer extends WebSocketServer {
 
 	public static void main(String[] args){
 		
+		
+		String host = "busch.click";
+		phase = "lobby";
+		int port = 3001;
+		
+		WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
+		
+		SSLContext context = getContext();
+		if (context != null) {
+			server.setWebSocketFactory(new DefaultSSLWebSocketServerFactory(getContext()));
+		}
+		
 		Runtime.getRuntime().addShutdownHook(new Thread() 
 		{ 
 			public void run() 
@@ -90,16 +102,6 @@ public class WerwolfServer extends WebSocketServer {
 			server.close();
 			} 
 		}); 
-		String host = "busch.click";
-		phase = "lobby";
-		int port = 3001;
-		
-		public WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
-		
-		SSLContext context = getContext();
-		if (context != null) {
-			server.setWebSocketFactory(new DefaultSSLWebSocketServerFactory(getContext()));
-		}
 		server.run();
 	}
 	
