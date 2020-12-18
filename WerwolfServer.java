@@ -52,7 +52,7 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		String players = "";
-		for (String key: names.keySet()) {
+		for (WebSocket key: names.keySet()) {
 			players = players + "," + names.get(key);
 		}
 		conn.send("[init]Players:"+players); //This method sends a message to the new client
