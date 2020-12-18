@@ -57,7 +57,7 @@ public class WerwolfServer extends WebSocketServer {
 		System.out.println(names.get(conn));
 		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
 		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
-		System.out.println(connections.
+		//System.out.println(connections.
 		
 	}
 
