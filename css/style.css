@@ -38,16 +38,37 @@ body {
 	margin-right: 5px;
 }
 
+.switch:hover {
+	filter: brightness(80%);
+}
+
 #playerlist {
 	float: left;
 	width: 25%;
 	height: 92%;
+	
+	margin-top: 5px;
+	box-sizing: border-box;
+	border: solid;
+	border-color: white;
 }
 
-#maps {
+#cards {
 	float: right;
 	width: 75%;
 	height: 92%;
+	
+	display: flex;
+}
+
+.image {
+	text-align: center;
+}
+
+.image > img {
+	margin-top: none;
+	width: auto;
+	height: 300px;
 }
 
 main {
