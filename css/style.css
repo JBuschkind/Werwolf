@@ -1,5 +1,6 @@
 html {
     height: 100%;
+	background-color: rgb(19, 21, 22);
 }
 
 body {
@@ -11,18 +12,38 @@ body {
 }
 
 main {
-		height: 100%;
-	
+	height: 100%;
 }
 
 header {
 	display: flex;
-	flex-direction: column;
+}
+
+header > div{
+	padding-right: 100px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border: double;
+	border-color: #b7410e;
+}
+
+p#bold {
+	font-weight: 900;
 }
 
 #text-field {
-	height: 20%;	
+	height: 12%;
 	
+	margin-top: 2.5px;
+	
+	border: solid;
+	border-width: 2px;
+	border-color: #b7410e;
+}
+
+#text-field > p {
+	margin-top: 5px;
 }
 
 .game  {
@@ -39,15 +60,37 @@ header {
 
 .playericon{
 	position: absolute;
-	top: 30%
 }
 
 #picture {
-		padding: 0px 5px;
+	padding: 0px 5px;
 }
 
 .character {
 	float: right;
 	width: 25%;
 	
+}
+
+#actions {
+	display: flex;
+	justify-content: center;
+}
+
+.button {
+	height: 50px;
+	width: 100px;
+	
+	border-color: black;
+	background-color: red;
+	color: hsl(0,0%,80%);
+	margin-right: 5px;
+}
+
+.button:hover {
+	filter: brightness(80%);
+}
+
+p {
+	color: hsl(0,0%,80%);
 }
