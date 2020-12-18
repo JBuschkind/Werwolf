@@ -51,21 +51,27 @@ public class WerwolfServer extends WebSocketServer {
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
+		String players = "";
+		for (String key: names.keySet()) {
+			players = players + "," + names.get(key);
+		}
+		conn.send("[init]Players:"+players); //This method sends a message to the new client
 		connections.add(conn);	//Adds connection to List of all connections	
 		names.put(conn,getRandomName()); //Gives the Player a random Name	
 		System.out.println(names.get(conn));
 		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
 		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
-		System.out.println(connections);
+		//System.out.println(connections);	//Debug Output
 		
 	}
 
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
-		connections.remove(conn);	//Removes Connection from the List of all connections
-		System.out.println(connections);
+		connections.remove(conn);	//Removes Connection from the List of all connections		
+		broadcast("[subPlayer]:"+names.get(conn);
+		names.remove(conn);
+		//System.out.println(connections);	//Debug Output
 	}
 
 	@Override
