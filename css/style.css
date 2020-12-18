@@ -25,7 +25,7 @@ body {
 
 #lobby {
 	z-index: 9;
-	background-color: white;
+	background-color: rgb(19, 21, 22);
 }
 
 .switch {
@@ -36,6 +36,18 @@ body {
 	background-color: red;
 	color: hsl(0,0%,80%);
 	margin-right: 5px;
+}
+
+#playerlist {
+	float: left;
+	width: 25%;
+	height: 92%;
+}
+
+#maps {
+	float: right;
+	width: 75%;
+	height: 92%;
 }
 
 main {
