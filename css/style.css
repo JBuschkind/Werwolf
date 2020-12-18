@@ -11,13 +11,21 @@ body {
     overflow: hidden;
 }
 
-#lobby {
+.container {
+	position: relative;
+}
+
+#game, #lobby {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: white;
+}
+
+#lobby {
+	z-index: 9;
+	background-color: rgb(19, 21, 22);
 }
 
 .switch {
@@ -28,6 +36,39 @@ body {
 	background-color: red;
 	color: hsl(0,0%,80%);
 	margin-right: 5px;
+}
+
+.switch:hover {
+	filter: brightness(80%);
+}
+
+#playerlist {
+	float: left;
+	width: 25%;
+	height: 92%;
+	
+	margin-top: 5px;
+	box-sizing: border-box;
+	border: solid;
+	border-color: white;
+}
+
+#cards {
+	float: right;
+	width: 75%;
+	height: 92%;
+	
+	display: flex;
+}
+
+.image {
+	text-align: center;
+}
+
+.image > img {
+	margin-top: none;
+	width: auto;
+	height: 300px;
 }
 
 main {
