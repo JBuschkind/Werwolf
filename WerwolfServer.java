@@ -48,11 +48,11 @@ public class WerwolfServer extends WebSocketServer {
 		System.out.println("Hier1");
 		//connections.add(conn);	//Adds connection to List of all connections
 		System.out.println("Hier2");
-		names.put(conn,getRandomName()); //Gives the Player a random Name
+		//names.put(conn,getRandomName()); //Gives the Player a random Name
 		System.out.println("Hier3");
-		System.out.println(names.get(conn));
-		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
-		System.out.println("new connection to " + conn.getRemoteSocketAddress() + "with the name" + names.get(conn));
+		//System.out.println(names.get(conn));
+		//broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
+		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
 		
 	}
 
@@ -84,6 +84,14 @@ public class WerwolfServer extends WebSocketServer {
 	
 
 	public static void main(String[] args){
+		
+		Runtime.getRuntime().addShutdownHook(new Thread() 
+		{ 
+			public void run() 
+			{ 
+			System.out.println("Shutdown Hook is running !"); 
+			} 
+		}); 
 		String host = "busch.click";
 		phase = "lobby";
 		int port = 3001;
