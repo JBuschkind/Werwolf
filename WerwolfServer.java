@@ -104,7 +104,7 @@ public class WerwolfServer extends WebSocketServer {
 		
 		Runtime.getRuntime().addShutdownHook(new Thread() 
 		{ 
-			public void run() throws InterruptedException, IOException
+			public void run() throws InterruptedException
 			{ 
 			System.out.println("Shutdown Hook is running !"); 
 			server.stop(1000);
