@@ -65,6 +65,7 @@ public class WerwolfServer extends WebSocketServer {
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
 		connections.remove(conn);	//Removes Connection from the List of all connections
+		System.out.println(connections);
 	}
 
 	@Override
