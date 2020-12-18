@@ -34,6 +34,7 @@ public class WerwolfServer extends WebSocketServer {
 	HashMap<String,LinkedList<WebSocket>> Rollen;
 	LinkedList<WebSocket> connections;
 	HashMap<WebSocket,String> names;
+	String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 
 	public WerwolfServer(InetSocketAddress address) {
 		super(address);
@@ -162,18 +163,7 @@ public class WerwolfServer extends WebSocketServer {
   
    public static String getRandomName() throws FileNotFoundException
   {
-	File f = new File("/text/Names.txt/");
-    String result = null;
     Random rand = new Random();
-    int n = 0;
-    for(Scanner sc = new Scanner(f); sc.hasNext(); )
-    {
-       ++n;
-       String line = sc.nextLine();
-       if(rand.nextInt(n) == 0)
-          result = line;         
-    }
-
-    return result;      
+    return defaultNames[rand.nextInt(defaultNames.size())];      
   }
 }
