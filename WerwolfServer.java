@@ -44,7 +44,7 @@ public class WerwolfServer extends WebSocketServer {
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
+		//conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
 		System.out.println("Hier1");
 		connections.add(conn);	//Adds connection to List of all connections
 		System.out.println("Hier2");
