@@ -11,12 +11,20 @@ body {
     overflow: hidden;
 }
 
-#lobby {
+.container {
+	position: relative;
+}
+
+#game, #lobby {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+#lobby {
+	z-index: 9;
 	background-color: white;
 }
 

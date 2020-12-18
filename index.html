@@ -1,61 +1,63 @@
 <!doctype html>
 <html>
 	<head>
-		<meta charset="UTF-8">
 		<title>Werwolf</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<meta charset="UTF-8">
 		<script src="client.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="changeSetting.js"></script>
 	</head>
-	<body>
-		<header>
-			<div>
-				<p id="bold">Name:</p>
-			</div>
-			<div>
-				<p id="bold">Rolle:</p>
-			</div>
-			<div>
-				<p id="bold">Status:</p>
-			</div>
-			<div>
-				<p id="bold">Timer:</p>
-			</div>
-		</header>
-		<main>
-			<div class="game">
-				<div id="circle">
-					<div class="playericon">
-					</div>
-				</div>	
-					<div id="text-field">
-						<p>Hier wird der Text stehen</p>
-					</div>
+	<body class="container">
+		<div id="lobby">
+			<button class="switch">Ja</button>
+		</div>
+		<div id="game">
+			<header>
+				<div>
+					<p id="bold">Name:</p>
 				</div>
-				<div class="character">
-					<div id="picture">
-						<img src="recources/pictures/back.png" />
+				<div>
+					<p id="bold">Rolle:</p>
+				</div>
+				<div>
+					<p id="bold">Status:</p>
+				</div>
+				<div>
+					<p id="bold">Timer:</p>
+				</div>
+			</header>
+			<main>
+				<div class="game">
+					<div id="circle">
+						<div class="playericon">
+						</div>
+					</div>	
+						<div id="text-field">
+							<p>Hier wird der Text stehen</p>
+						</div>
 					</div>
-					<div id="actions">
-						<div>
-							<button class="button">Ja</button> 
+					<div class="character">
+						<div id="picture">
+							<img src="recources/pictures/back.png" />
 						</div>
-						<div>
-							<button class="button">Nein</button> 
-						</div>
-						<div>
-							<button class="button">Bestätigen</button> 
-						</div>
-						<div>
-							<button class="button">Artefakt</button>
+						<div id="actions">
+							<div>
+								<button class="button">Ja</button> 
+							</div>
+							<div>
+								<button class="button">Nein</button> 
+							</div>
+							<div>
+								<button class="button">Bestätigen</button> 
+							</div>
+							<div>
+								<button class="button">Artefakt</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</main>
-		</div>
-		<div id="lobby">
-			<button class="switch">Ja</button>
 		</div>
 	</body>
 </html>	
