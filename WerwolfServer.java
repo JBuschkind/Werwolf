@@ -2,6 +2,7 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.HashMap;
+import java.io.*;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -33,22 +34,32 @@ public class WerwolfServer extends WebSocketServer {
 	HashMap<String,LinkedList<WebSocket>> Rollen;
 	LinkedList<WebSocket> connections;
 	HashMap<WebSocket,String> names;
+	static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 
+	
+  
 	public WerwolfServer(InetSocketAddress address) {
 		super(address);
 	}
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
-		broadcast( "new connection: " + handshake.getResourceDescriptor() ); //This method sends a message to all clients connected
-		System.out.println("new connection to " + conn.getRemoteSocketAddress());
-		connections.add(conn);
+		//conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
+		System.out.println("Hier1");
+		//connections.add(conn);	//Adds connection to List of all connections
+		System.out.println("Hier2");
+		//names.put(conn,getRandomName()); //Gives the Player a random Name
+		System.out.println("Hier3");
+		//System.out.println(names.get(conn));
+		//broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
+		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
+		
 	}
 
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
+		connections.remove(conn);	//Removes Connection from the List of all connections
 	}
 
 	@Override
@@ -73,6 +84,14 @@ public class WerwolfServer extends WebSocketServer {
 	
 
 	public static void main(String[] args){
+		
+		Runtime.getRuntime().addShutdownHook(new Thread() 
+		{ 
+			public void run() 
+			{ 
+			System.out.println("Shutdown Hook is running !"); 
+			} 
+		}); 
 		String host = "busch.click";
 		phase = "lobby";
 		int port = 3001;
@@ -155,4 +174,12 @@ public class WerwolfServer extends WebSocketServer {
     }
     return bytesArray;
   }
+  
+  public static String getRandomName()
+	{
+		Random rand = new Random();
+		rand = null;
+		return "test";//defaultNames[rand.nextInt(defaultNames.length)];      
+		
+	} 
 }
