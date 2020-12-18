@@ -31,11 +31,11 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 public class WerwolfServer extends WebSocketServer {
 
 	public WerwolfServer(){
-		String phase = "";
-		HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
-		LinkedList<WebSocket> connections = new LinkedList<>();
-		HashMap<WebSocket,String> names = new HashMap<>();
-		String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
+		public String phase = "";
+		public HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
+		public LinkedList<WebSocket> connections = new LinkedList<>();
+		public HashMap<WebSocket,String> names = new HashMap<>();
+		public String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 	}
 	
   
