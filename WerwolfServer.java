@@ -30,12 +30,19 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
 public class WerwolfServer extends WebSocketServer {
 
-	static String phase;
-	HashMap<String,LinkedList<WebSocket>> Rollen;
-	LinkedList<WebSocket> connections;
-	HashMap<WebSocket,String> names;
-	static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
-
+	public static String phase = "";
+	public HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
+	public static LinkedList<WebSocket> connections = new LinkedList<>();
+	public static HashMap<WebSocket,String> names = new HashMap<>();
+	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
+	
+	public WerwolfServer(){
+		//phase = "";
+		//Rollen = new HashMap<>();
+		//connections = new LinkedList<>();
+		//names = new HashMap<>();
+		//defaultNames = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
+	}
 	
   
 	public WerwolfServer(InetSocketAddress address) {
@@ -44,15 +51,13 @@ public class WerwolfServer extends WebSocketServer {
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		//conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
-		System.out.println("Hier1");
-		//connections.add(conn);	//Adds connection to List of all connections
-		System.out.println("Hier2");
-		//names.put(conn,getRandomName()); //Gives the Player a random Name
-		System.out.println("Hier3");
-		//System.out.println(names.get(conn));
-		//broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
+		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
+		connections.add(conn);	//Adds connection to List of all connections	
+		names.put(conn,getRandomName()); //Gives the Player a random Name	
+		System.out.println(names.get(conn));
+		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
 		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
+		//System.out.println(connections.
 		
 	}
 
@@ -74,6 +79,7 @@ public class WerwolfServer extends WebSocketServer {
 
 	@Override
 	public void onError(WebSocket conn, Exception ex) {
+		ex.printStackTrace();
 		System.err.println("an error occurred on connection " + conn.getRemoteSocketAddress()  + ":" + ex);
 	}
 	
@@ -85,13 +91,7 @@ public class WerwolfServer extends WebSocketServer {
 
 	public static void main(String[] args){
 		
-		Runtime.getRuntime().addShutdownHook(new Thread() 
-		{ 
-			public void run() 
-			{ 
-			System.out.println("Shutdown Hook is running !"); 
-			} 
-		}); 
+		
 		String host = "busch.click";
 		phase = "lobby";
 		int port = 3001;
@@ -102,6 +102,18 @@ public class WerwolfServer extends WebSocketServer {
 		if (context != null) {
 			server.setWebSocketFactory(new DefaultSSLWebSocketServerFactory(getContext()));
 		}
+		
+		Runtime.getRuntime().addShutdownHook(new Thread() 
+		{ 
+			public void run()
+			{ 
+			System.out.println("Shutdown Hook is running !");
+			try{
+			server.stop(1000);
+			} catch(InterruptedException e){
+			} 
+			}
+		}); 
 		server.run();
 	}
 	
@@ -178,8 +190,9 @@ public class WerwolfServer extends WebSocketServer {
   public static String getRandomName()
 	{
 		Random rand = new Random();
+		String name = defaultNames[rand.nextInt(defaultNames.length)];
 		rand = null;
-		return "test";//defaultNames[rand.nextInt(defaultNames.length)];      
+		return name;      
 		
 	} 
 }
