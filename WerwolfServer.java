@@ -109,7 +109,7 @@ public class WerwolfServer extends WebSocketServer {
 			System.out.println("Shutdown Hook is running !");
 			try{
 			server.stop(1000);
-			} catch(InterruptedException){
+			} catch(InterruptedException e){
 			} 
 			}
 		}); 
