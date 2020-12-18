@@ -32,7 +32,7 @@ public class WerwolfServer extends WebSocketServer {
 
 	public static String phase;
 	public HashMap<String,LinkedList<WebSocket>> Rollen;
-	public LinkedList<WebSocketImpl> connections;
+	public LinkedList<WebSocket> connections;
 	public HashMap<WebSocket,String> names;
 	public String defaultNames[];
 	
@@ -53,6 +53,7 @@ public class WerwolfServer extends WebSocketServer {
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
 		try{
+			System.out.println(conn);
 		connections.add(conn);	//Adds connection to List of all connections
 		System.out.println("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
 		} catch(Exception e){
