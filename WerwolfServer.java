@@ -191,8 +191,9 @@ public class WerwolfServer extends WebSocketServer {
   public static String getRandomName()
 	{
 		Random rand = new Random();
+		String name = defaultNames[rand.nextInt(defaultNames.length)];
 		rand = null;
-		return defaultNames[rand.nextInt(defaultNames.length)];      
+		return name;      
 		
 	} 
 }
