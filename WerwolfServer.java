@@ -2,6 +2,7 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.HashMap;
+import java.io.*;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -41,14 +42,17 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
-		broadcast( "new connection: " + handshake.getResourceDescriptor() ); //This method sends a message to all clients connected
-		System.out.println("new connection to " + conn.getRemoteSocketAddress());
-		connections.add(conn);
+		connections.add(conn);	//Adds connection to List of all connections
+		names.put(conn,getRandomName()); //Gives the Player a random Name
+		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
+		System.out.println("new connection to " + conn.getRemoteSocketAddress() + "with the name" + names.get(conn));
+		
 	}
 
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
+		connections.remove(conn);	//Removes Connection from the List of all connections
 	}
 
 	@Override
@@ -154,5 +158,22 @@ public class WerwolfServer extends WebSocketServer {
       e.printStackTrace();
     }
     return bytesArray;
+  }
+  
+   public static String getRandomName() throws FileNotFoundException
+  {
+	File f = new File("/text/Names.txt/");
+    String result = null;
+    Random rand = new Random();
+    int n = 0;
+    for(Scanner sc = new Scanner(f); sc.hasNext(); )
+    {
+       ++n;
+       String line = sc.nextLine();
+       if(rand.nextInt(n) == 0)
+          result = line;         
+    }
+
+    return result;      
   }
 }
