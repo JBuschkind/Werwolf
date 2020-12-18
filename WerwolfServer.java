@@ -30,12 +30,18 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
 public class WerwolfServer extends WebSocketServer {
 
+	public String phase;
+	public HashMap<String,LinkedList<WebSocket>> Rollen;
+	public LinkedList<WebSocket> connections;
+	public HashMap<WebSocket,String> names;
+	public String defaultNames[];
+	
 	public WerwolfServer(){
-		public String phase = "";
-		public HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
-		public LinkedList<WebSocket> connections = new LinkedList<>();
-		public HashMap<WebSocket,String> names = new HashMap<>();
-		public String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
+		phase = "";
+		Rollen = new HashMap<>();
+		connections = new LinkedList<>();
+		names = new HashMap<>();
+		defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 	}
 	
   
