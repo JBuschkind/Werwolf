@@ -30,10 +30,10 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
 public class WerwolfServer extends WebSocketServer {
 
-	static String phase;
-	HashMap<String,LinkedList<WebSocket>> Rollen;
-	LinkedList<WebSocket> connections;
-	HashMap<WebSocket,String> names;
+	static String phase = "";
+	HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap();
+	LinkedList<WebSocket> connections = new LinkedList();
+	HashMap<WebSocket,String> names = new HashMap();
 	static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 
 	
@@ -45,12 +45,10 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		conn.send("Lets play some Werwolf!"); //This method sends a message to the new client
-		connections.add(conn);	//Adds connection to List of all connections
-		System.out.println("Hier2");
-		//names.put(conn,getRandomName()); //Gives the Player a random Name
-		System.out.println("Hier3");
-		//System.out.println(names.get(conn));
-		//broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
+		connections.add(conn);	//Adds connection to List of all connections		
+		names.put(conn,getRandomName()); //Gives the Player a random Name
+		System.out.println(names.get(conn));
+		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
 		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
 		
 	}
