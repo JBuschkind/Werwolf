@@ -96,7 +96,7 @@ public class WerwolfServer extends WebSocketServer {
 		phase = "lobby";
 		int port = 3001;
 		
-		WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
+		public WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
 		
 		SSLContext context = getContext();
 		if (context != null) {
