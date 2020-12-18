@@ -164,6 +164,6 @@ public class WerwolfServer extends WebSocketServer {
    public static String getRandomName() throws FileNotFoundException
   {
     Random rand = new Random();
-    return defaultNames[rand.nextInt(defaultNames.size())];      
+    return defaultNames[rand.nextInt(defaultNames.length())];      
   }
 }
