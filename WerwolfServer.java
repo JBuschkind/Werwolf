@@ -34,7 +34,7 @@ public class WerwolfServer extends WebSocketServer {
 	public HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
 	public static LinkedList<WebSocket> connections = new LinkedList<>();
 	public HashMap<WebSocket,String> names = new HashMap<>();
-	public String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
+	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
 	
 	public WerwolfServer(){
 		//phase = "";
