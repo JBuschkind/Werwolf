@@ -179,7 +179,7 @@ header > div{
 .character {
 	float: right;
 	width: 25%;
-	
+	height: 100%
 }
 
 #actions {
@@ -199,6 +199,14 @@ header > div{
 
 .button:hover {
 	filter: brightness(80%);
+}
+
+#skip {
+	height: 18%;
+	margin-top: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 p {
