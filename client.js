@@ -27,6 +27,7 @@
 		console.log(text);
 		document.getElementById("playerspan").innerHTML = text;
 		
+
 	};
 	
 	let setName = function(name) {
@@ -49,5 +50,6 @@
 		document.getElementById("ingameTimer").innerHTML = text;
 	}
 	
-	
-	
+	let switchview = function() {
+		console.log("Hallo");
+	}
