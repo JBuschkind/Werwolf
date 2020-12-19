@@ -3,6 +3,7 @@ import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.HashMap;
 import java.io.*;
+import java.lang.Math;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
@@ -310,6 +311,17 @@ public class WerwolfServer extends WebSocketServer {
             server.broadcast("[displayText]:" + key + " " + value + ";");  
 		} */
 	}
+	
+	public void refreshCircle(){
+		float alpha = 360/connections.size();
+		int n = 0
+		String befehl = "[updateCircle]:";
+		for(WebSocket conn: connections){
+			befehl = befehl + "," +names.get(conn) + "_" + (Math.sin(Math.toRadians(alpha) * n) * 1) + "_" + (Math.cos(Math.toRadians(alpha) * n) * 1)
+			n++
+		}
+		server.broadcast(befehl);
+	}	
 }
 
 

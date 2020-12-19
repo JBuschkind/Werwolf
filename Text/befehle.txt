@@ -9,6 +9,7 @@ Server->Player:
 [displayText] Adds a line of text to the textbox
 [activateButton]
 [deactivateButton]
+[updateCircle]
 
 Player->Server:
 [changeName] Changes the Players Name

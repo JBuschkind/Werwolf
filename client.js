@@ -69,7 +69,7 @@
 		let text = role;
 		document.getElementById("ingameRole").innerHTML = text;
 		console.log(document.getElementById("picture").innerHTML);
-		document.getElementById("picture").innerHTML = "<img src=\"recources/pictures/"+role+".png\">";
+		document.getElementById("picture2").innerHTML = "<img src=\"recources/pictures/"+role+".png\" style=\"max-width: 100%\">";
 		//console.log("<img src=\"recources/pictures/" + role +".png\" />");
 	}
 	
