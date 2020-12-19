@@ -15,19 +15,22 @@
 					refreshPlayers(befehle2[1].split(","));
 					break;
 				case "[getName]":
-					getName(befehle[1]);
+					getName(befehle2[1]);
 					break;
 				case "[setName]":
-					setName(befehle[1]);
+					setName(befehle2[1]);
 					break;
 				case "[setRole]":
-					setRole(befehle[1]);
+					setRole(befehle2[1]);
 					break;
 				case "[setStatus]":
-					setStatus(befehle[1]);
+					setStatus(befehle2[1]);
 					break;
 				case "[setTimer]":
-					setTimer(befehle[1]);
+					setTimer(befehle2[1]);
+					break;
+				case "[displayText]":
+					updateTextbox(befehle2[1]);
 					break;
 				case "[commenceGame]":
 					forceSwitch();
@@ -50,15 +53,15 @@
 
 	};
 	
-
-	let getName = function() {
-		let text = document.getElementById("name").value;
-		socket.send("[changeName]:" + text);
-	}
-	
 	let setName = function(name) {
 		let text = name;
 		document.getElementById("ingameName").innerHTML = text;
+	}
+	
+	let getName = function() {
+		let text = document.getElementById("name").value;
+		socket.send("[changeName]:" + text);
+		setName(text);
 	}
 	
 	let setRole = function(role) {
