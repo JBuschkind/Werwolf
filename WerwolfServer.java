@@ -216,27 +216,26 @@ public class WerwolfServer extends WebSocketServer {
 	public void start(){
 		
 	}
+	
 	public void lobby(WebSocket conn, String message){
-		
-		
+		List<String> Befehl1 = message.split(";");
+		for(element String : Befehl1){
+			List<String> Befehl2 = element.split(":");
+			switch(Befehl2[0]){
+			case "[changeName]":
+				setName(conn,Befehl2[1]);				
+			}
+		}	
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	}
 	
+	public void setName(WebSocket conn, String name){
+		names.remove(conn);
+		names.put(conn,name);
+		String players = "";
+		for (WebSocket key: names.keySet()) {
+			players = players + "," + names.get(key);
+		}
+		broadcast( "[refreshPlayers]:"+players  );
 	}	
 }

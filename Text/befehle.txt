@@ -1,9 +1,13 @@
+Server->Player:
 [refreshPlayers] Sends the Client a new Playerlist
 [getName] Sends current name to server
 [setName] Sets the name
 [setRole] Sets the role
 [setStatus] Sets the status
 [setTimer] Sets the Time(/r)
+
+Player->Server:
+[changeName] Changes the Players Name
 
 Bsp:
 	[refreshPlayers]:,Manfred,Anna,TinaToastbrot;

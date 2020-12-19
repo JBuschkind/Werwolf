@@ -47,7 +47,7 @@
 
 	};
 	
-	document.getElementById("name").onchange = function() {
+	/*document.getElementById("name").onchange*/let changeName = function() {
 		let text = document.getElementById("name");
 		socket.send("[changeName]:" + text);
 	}
