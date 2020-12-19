@@ -35,6 +35,7 @@ public class WerwolfServer extends WebSocketServer {
 	public static LinkedList<WebSocket> connections = new LinkedList<>();
 	public static HashMap<WebSocket,String> names = new HashMap<>();
 	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal","Johann","Torben","Emma","Manuel","Anni"};
+	public WebSocketServer server;
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -113,7 +114,7 @@ public class WerwolfServer extends WebSocketServer {
 		phase = "lobby";
 		int port = 3001;
 		
-		public WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
+		server = new WerwolfServer(new InetSocketAddress(host, port));
 		
 		SSLContext context = getContext();
 		if (context != null) {
