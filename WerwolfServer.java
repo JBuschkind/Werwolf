@@ -225,8 +225,10 @@ public class WerwolfServer extends WebSocketServer {
 			switch(Befehl2[0]){
 			case "[changeName]":
 				setName(conn,Befehl2[1]);	
+				break;
 			case "[startGame]":
 				startGame(Befehl2[1]);
+				break;
 			}
 		}	
 	
