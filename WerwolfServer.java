@@ -304,7 +304,7 @@ public class WerwolfServer extends WebSocketServer {
 					}else{
 						werwolfWahl.put(conn,Integer.parseInt(message2[0]));
 						boolean test = true;
-						int[] temp2 = werwolfWahl.values().toArray();
+						Integer[] temp2 = werwolfWahl.values().toArray();
 						int temp = temp2[0];
 						for(int i:temp2){
 							if(i != temp || i == -1)
