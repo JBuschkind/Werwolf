@@ -31,7 +31,7 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
 public class WerwolfServer extends WebSocketServer {
 	
-	public static index = 0;
+	public static int index = 0;
 	public static HashMap<Integer,WebSocket> ids= new HashMap<>();
 	public static String phase = "";
 	public static String stage = "";
