@@ -1,0 +1,17 @@
+Dorfbewohner_Nacht
+Amor_Setup
+Amor_Auswahl
+Werwolf_Setup
+Werwolf_Wahl
+Werwolf_Entschluss
+Leibwächter_Setup
+Leibwächter_Wahl
+Hexe_Setup
+Hexe_Wahl_Heilung
+	Hexe_Wahl_Heilung_2
+Hexe_Wahl_Gift
+	Hexe_Wahl_Gift_2
+Seherin_Setup
+Seherin_Wahl
+Tag_Setup
+Tag_Wahl
