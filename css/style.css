@@ -174,7 +174,11 @@ header > div{
 
 #picture {
 	padding: 0px 5px;
+	/*max-width: 25%;*/
 }
+#playerpicture {
+		max-width: 100%;
+}	
 
 .character {
 	float: right;

@@ -291,13 +291,13 @@ public class WerwolfServer extends WebSocketServer {
 			}
 			}			
 		}
+		server.broadcast("[commenceGame];");
 		Set<String> keys = rollen.keySet();
 		for(String key:keys){
 			for(WebSocket conn2 : rollen.get(key)){
 				conn2.send("[setRole]:" + key +";");
 			}	
-		}	
-		server.broadcast("[commenceGame];");
+		}			
 		phase = "game";
 		stage = "Dorfbewohner_Nacht";
 		nacht = 0;
