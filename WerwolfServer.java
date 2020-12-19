@@ -314,11 +314,11 @@ public class WerwolfServer extends WebSocketServer {
 	
 	public void refreshCircle(){
 		float alpha = 360/connections.size();
-		int n = 0
+		int n = 0;
 		String befehl = "[updateCircle]:";
 		for(WebSocket conn: connections){
 			befehl = befehl + "," +names.get(conn) + "_" + (Math.sin(Math.toRadians(alpha) * n) * 1) + "_" + (Math.cos(Math.toRadians(alpha) * n) * 1)
-			n++
+			n++;
 		}
 		server.broadcast(befehl);
 	}	
