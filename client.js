@@ -28,3 +28,7 @@
 		document.getElementById("playerspan").innerHTML = text;
 		
 	};	
+	
+	let switchview = function() {
+		console.log("Hallo");
+	}
