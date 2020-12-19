@@ -51,7 +51,10 @@
 
 	let activateButton = function(button){
 		if(button == "players"){
-			document.getElementsByClassName("playerButton").setAttribute("disabled",false);
+			let list = document.getElementsByClassName("playerButton");
+			for(let i = 0; i<list.length;i++){
+				list.item(i).setAttribute("test","false");
+			}
 		}else{	
 		document.getElementById(button).disabled = false;
 		document.getElementById(button).style = "";
@@ -60,7 +63,10 @@
 	
 	let deactivateButton = function(button){
 		if(button == "players"){
-			document.getElementsByClassName("playerButton").setAttribute("disabled",true);
+			let list = document.getElementsByClassName("playerButton");
+			for(let i = 0; i<list.length;i++){
+				list.item(i).setAttribute("test","true");
+			}
 		}else{
 		document.getElementById(button).disabled = true;
 		document.getElementById(button).style = "background-color: gray;";
@@ -141,14 +147,19 @@
 	
 
 	let clickedPicture = function(event) {
-		if(event.currentTarget.getAttribute("disabled"){
+		if(event.currentTarget.getAttribute("test") == "true"){
 		}else{	
-		console.log(event.currentTarget.name);	
+			event.currentTarget.setAttribute("selected","");
 		}
 	}	
 
-	let saveClicked = function() {
-		
+	let btnConfirm = function() {
+		let names = "";
+		while(document.querySelector("[selected]") != null){
+			names = names + "," + document.querySelector("[selected]").name;
+			document.querySelector("[selected]").removeAttribute("selected");
+		}
+		socket.send("[input]:" + 
 	}
 	
 	let updateCircle = function(message) {

@@ -265,7 +265,13 @@ public class WerwolfServer extends WebSocketServer {
 				break;
 			case "Amor_Auswahl":
 				if(rollen.get("amor").size()>0 && nacht == 0){
-					server.broadcast("[displayText]:Amor traf seine Wahl;[deactivateButton]:buttonConfirm;[deactivateButton]:players;");
+					String[] message2 = ArrayUtils.remove((message.split("."))[1].split(","),0);
+					if(message2.length == 2){
+						Verliebte = message2[0] + ":" + message2[1];
+						server.broadcast("[displayText]:Amor traf seine Wahl;[deactivateButton]:buttonConfirm;[deactivateButton]:players;");
+					}else{
+						conn.send("[displayText]:Bitte 2 Personen auswählen;");
+					}	
 				}	
 		}
 	}	

@@ -180,6 +180,9 @@ header > div{
 		max-width: 100%;
 }	
 
+.playerButton{
+}
+
 .character {
 	float: right;
 	width: 25%;
