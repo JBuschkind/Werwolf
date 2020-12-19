@@ -1,2 +1,6 @@
-[addPlayer] fügt einen Spieler der Lobbyliste hinzu
-[subPlayer] entfernt einen Spieler der Lobbyliste
+[refreshPlayers] Sends the Client a new Playerlist
+
+
+
+Bsp:
+	[refreshPlayers]:,Manfred,Anna,TinaToastbrot;
