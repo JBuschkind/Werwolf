@@ -44,7 +44,7 @@ public class WerwolfServer extends WebSocketServer {
 	public static int nacht = 0;
 	public static HashMap<WebSocket,Integer> werwolfWahl = new HashMap<>();
 	public int werwolfTarget = -1;
-	public static Hashmap<WebSocket,int> stimmen = new HashMap<>();
+	public static HashMap<WebSocket,int> stimmen = new HashMap<>();
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -389,11 +389,14 @@ public class WerwolfServer extends WebSocketServer {
 	public void winTest(){
 		if(rollen.get("werwolf").size() == 0 ){
 			server.broadcast("[displayText]:Die Dorfbewoner haben gewonnen;");
+			Thread.sleep(10000);
+		server.broadcast("[reload];");
 		}else if( rollen.get("dorfbewohner").size() == 0 && rollen.get("hexe").size() == 0 && rollen.get("leibwaechter").size() == 0 && rollen.get("seherin").size() == 0 && rollen.get("amor").size() == 0){
 			server.broadcast("[displayText]:Die Werwölfe haben gewonnen;");
+			Thread.sleep(10000);
+			server.broadcast("[reload];");
 		}
-		Thread.sleep(10000);
-		server.broadcast("[reload];");
+		
 	}	
 	
 	public void death(WebSocket conn){
