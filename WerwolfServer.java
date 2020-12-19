@@ -275,6 +275,7 @@ public class WerwolfServer extends WebSocketServer {
 					}
 				}else{
 					stage="Werwolf_Setup";
+					game(conn,message);
 				}
 				stage="Amor_Auswahl";
 				break;
