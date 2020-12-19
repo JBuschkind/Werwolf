@@ -44,7 +44,7 @@ public class WerwolfServer extends WebSocketServer {
 	public static int nacht = 0;
 	public static HashMap<WebSocket,Integer> werwolfWahl = new HashMap<>();
 	public int werwolfTarget = -1;
-	public static HashMap<WebSocket,int> stimmen = new HashMap<>();
+	public static HashMap<WebSocket,Integer> stimmen = new HashMap<>();
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -330,7 +330,7 @@ public class WerwolfServer extends WebSocketServer {
 			case "Leibwächter_Setup":
 				if(rollen.get("leibwaechter").size()>0){
 				server.broadcast("[displayText]:Der Leibwächter beschützt ein Haus;");
-				rollen.get("leibwaechter")[0].send("[displayText]:Such eine Person zum beschützen aus;[activateButton]:players;[activateButton]:buttonConfirm;");
+				rollen.get("leibwaechter").getFirst().send("[displayText]:Such eine Person zum beschützen aus;[activateButton]:players;[activateButton]:buttonConfirm;");
 				}
 				stage="Leibwächter_Wahl";
 				break;
@@ -368,7 +368,7 @@ public class WerwolfServer extends WebSocketServer {
 					}else{
 						i++;
 						stimmen.put(ids.get(Integer.parseInt(message2[0])),stimmen.get(ids.get(Integer.parseInt(message2[0])))+1);
-						conn.send("[displayText]:Du stimmtest für " +names.get(ids.get(Integer.parseInt(mesage2[0]))) +";[deactivateButton]:players;[deactivateButton]:buttonConfirm;");
+						conn.send("[displayText]:Du stimmtest für " +names.get(ids.get(Integer.parseInt(message2[0]))) +";[deactivateButton]:players;[deactivateButton]:buttonConfirm;");
 						if(i==connections.size()){
 							stage="Tag_Abend";
 							game(conn,message);
