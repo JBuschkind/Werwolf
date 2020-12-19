@@ -300,7 +300,7 @@ public class WerwolfServer extends WebSocketServer {
 				if(rollen.get("werwolf").size()>0){
 					String[] message2 = (message.split(":"))[1].substring(1).split(",");
 					if(message2.length != 1){
-						conn.send("[displayText]:Bitte genau ein Ziel angeben;")"
+						conn.send("[displayText]:Bitte genau ein Ziel angeben;");
 					}else{
 						werwolfWahl.put(conn,message2[0]);
 						boolean test = true;
