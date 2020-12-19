@@ -259,6 +259,7 @@ public class WerwolfServer extends WebSocketServer {
 				connectionsCopy.remove(n);
 			}		
 		}
+		System.out.println("HI");
 		rand = null;
 		for (String name: rollen.keySet()){
             String key = name.toString();

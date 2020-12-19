@@ -81,8 +81,9 @@
 	
 	let updateTextbox = function(txt) {
 		let text = document.getElementById("textfield").value;
-		
+		console.log(txt);
 		text = text + "<p>" + txt + "</p>";
+		console.log(text);
 		document.getElementById("textfield").innerHTML = text;
 	}
 	
