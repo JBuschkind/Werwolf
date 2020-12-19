@@ -28,6 +28,7 @@
 		document.getElementById("playerspan").innerHTML = text;
 		
 
+
 	};
 	
 	let setName = function(name) {
@@ -53,3 +54,9 @@
 	let switchview = function() {
 		console.log("Hallo");
 	}
+
+	
+	let switchview = function() {
+		console.log("Hallo");
+	}
+
