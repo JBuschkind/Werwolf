@@ -257,7 +257,6 @@ public class WerwolfServer extends WebSocketServer {
 				int n = rand.nextInt(connectionsCopy.size());
 				rollen.get(element2[0]).add(connectionsCopy.get(n));
 				connectionsCopy.remove(n);
-				n=null;
 			}		
 		}
 		rand = null;
