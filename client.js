@@ -108,11 +108,21 @@
 		});
 	}
 	
+
 	let test = function() {
 		
 	console.log(this);	
 		
 	}	
+
+	let saveClicked = function() {
+		
+	}
+	
+	let getClicked = function() {
+		
+	}
+
 
 	
 
