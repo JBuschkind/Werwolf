@@ -302,7 +302,7 @@ public class WerwolfServer extends WebSocketServer {
 					if(message2.length != 1){
 						conn.send("[displayText]:Bitte genau ein Ziel angeben;");
 					}else{
-						werwolfWahl.put(conn,message2[0]);
+						werwolfWahl.put(conn,Integer.parseInt(message2[0]));
 						boolean test = true;
 						int[] temp2 = werwolfWahl.values.toArray();
 						int temp = temp2[0];
