@@ -291,6 +291,13 @@ public class WerwolfServer extends WebSocketServer {
 			}
 			}			
 		}
+		for(WebSocket conn2:connections){
+			for(LinkedList<WebSocket> element: rollen){
+				if(element.contains(conn2)){
+					conn2.send("[setRole]:" + rollen.getKey(element);
+				}	
+			}	
+		}	
 		server.broadcast("[commenceGame]");
 		phase = "game";
 		stage = "Dorfbewohner_Nacht";
