@@ -27,4 +27,27 @@
 		console.log(text);
 		document.getElementById("playerspan").innerHTML = text;
 		
-	};	
+	};
+	
+	let setName = function(name) {
+		let text = name;
+		document.getElementById("ingameName").innerHTML = text;
+	}
+	
+	let setRole = function(role) {
+		let text = role;
+		document.getElementById("ingameRole").innerHTML = text;
+	}
+	
+	let setStatus = function(curStatus) {
+		let text = curStatus;
+		document.getElementById("ingameStatus").innerHTML = text;
+	}
+	
+	let setTimer = function(timer) {
+		let text = timer;
+		document.getElementById("ingameTimer").innerHTML = text;
+	}
+	
+	
+	

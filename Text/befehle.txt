@@ -1,6 +1,7 @@
 [refreshPlayers] Sends the Client a new Playerlist
-
+[setName] Sets a name
 
 
 Bsp:
 	[refreshPlayers]:,Manfred,Anna,TinaToastbrot;
+	[setName]:Anna;
