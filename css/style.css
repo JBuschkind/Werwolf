@@ -28,10 +28,23 @@ body {
 	background-color: rgb(19, 21, 22);
 }
 
+#nameselect {
+	display: flex;
+	flex-direction: row;
+	
+	align-items: center;
+}
+
+#nameselect > p {
+	margin-right: 10px;
+}
+
 input[type="text"], textarea {
 	color: hsl(0,0%,80%);
 	background-color : rgb(19, 21, 22);  
 	outline: 1px solid black;
+	
+	height: 25px
 }
 
 .switch {
@@ -71,6 +84,10 @@ input[type="text"], textarea {
 	text-align: center;
 }
 
+.input {
+	text-align: center;
+}
+
 .image > img {
 	margin-top: none;
 	width: auto;
@@ -94,8 +111,15 @@ header > div{
 	border-color: #b7410e;
 }
 
-label {
-	color: white;
+.info {
+	display: flex;
+	flex-direction: row;
+	
+	align-items: center;
+}
+
+.realinfo {
+	margin-left: 10px;
 }
 
 .bold {
@@ -112,7 +136,7 @@ label {
 	border-color: #b7410e;
 }
 
-span > p {
+.textfield {
 	margin-top: 5px;
 }
 
