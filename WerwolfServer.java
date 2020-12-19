@@ -219,7 +219,7 @@ public class WerwolfServer extends WebSocketServer {
 	
 	public void lobby(WebSocket conn, String message){
 		String[] Befehl1 = message.split(";");
-		for(element String : Befehl1){
+		for(String element : Befehl1){
 			String[] Befehl2 = element.split(":");
 			switch(Befehl2[0]){
 			case "[changeName]":
