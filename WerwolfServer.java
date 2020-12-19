@@ -273,6 +273,8 @@ public class WerwolfServer extends WebSocketServer {
 					for(WebSocket amor:rollen.get("amor")){
 						amor.send("[displayText]:Du wählst 2 Spieler aus, und bestätigst dann;[activateButton]:buttonConfirm;[activateButton]:players;");						
 					}
+				}else{
+					stage="Werwolf_Setup";
 				}
 				stage="Amor_Auswahl";
 				break;
