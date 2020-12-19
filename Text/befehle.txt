@@ -1,1 +1,6 @@
 [refreshPlayers] Sends the Client a new Playerlist
+
+
+
+Bsp:
+	[refreshPlayers]:,Manfred,Anna,TinaToastbrot;
