@@ -311,7 +311,7 @@ public class WerwolfServer extends WebSocketServer {
 					}else{
 						werwolfWahl.put(conn,Integer.parseInt(message2[0]));
 						boolean test = true;
-						Integer[] temp2 = new Integer[werwolfWahl.size()];
+						Integer[] temp2 = new Integer[werwolfWahl.size()]-1;
 						werwolfWahl.values().toArray(temp2);
 						int temp = temp2[0];
 						for(int i:temp2){
@@ -336,10 +336,12 @@ public class WerwolfServer extends WebSocketServer {
 				if(rollen.get("leibwaechter").size()>0){
 				server.broadcast("[displayText]:Der Leibwächter beschützt ein Haus;");
 				rollen.get("leibwaechter").getFirst().send("[displayText]:Such eine Person zum beschützen aus;[activateButton]:players;[activateButton]:buttonConfirm;");
-				}
+				}else{
+					stage="Tag_Setup";
+					game(conn,message);
 				stage="Leibwächter_Wahl";
 				break;
-			case "Leibwaechter_Wahl":
+			case "Leibwächter_Wahl":
 				if(rollen.get("leibwaechter").size()>0){
 					String[] message2 = (message.split(":"))[1].substring(1).split(",");
 					if(message2.length != 1){
