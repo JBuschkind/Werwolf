@@ -37,7 +37,7 @@
 					forceSwitch();
 					break;
 				case "[updateCircle]":
-					updateCircle();
+					updateCircle(befehle2[1]);
 					break;
 			}
 		});	
@@ -130,6 +130,7 @@
 	}
 	
 	let updateCircle = function(message) {
+		document.getElementById("circle").innerHTML = "";
 		let message2 = message.split(",");
 		message2.forEach(function(player){
 			if(player != ""){

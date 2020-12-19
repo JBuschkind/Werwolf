@@ -270,7 +270,7 @@ public class WerwolfServer extends WebSocketServer {
 		names.remove(conn);
 		names.put(conn,name);
 		String players = "";
-		for (WebSocket key: names.keySet()) {
+		for (WebSocket key: names.keySet()) {			
 			players = players + "," + names.get(key);
 		}
 		broadcast( "[refreshPlayers]:"+players  );
@@ -298,7 +298,10 @@ public class WerwolfServer extends WebSocketServer {
 			for(WebSocket conn2 : rollen.get(key)){
 				conn2.send("[setRole]:" + key +";");
 			}	
-		}			
+		}
+		for (WebSocket key: names.keySet()) {			
+			key.send("[setName]:"+names.get(key));
+		}		
 		phase = "game";
 		stage = "Dorfbewohner_Nacht";
 		nacht = 0;
@@ -319,7 +322,7 @@ public class WerwolfServer extends WebSocketServer {
 		int n = 0;
 		String befehl = "[updateCircle]:";
 		for(WebSocket conn: connections){
-			befehl = befehl + "," +names.get(conn) + "_" + conn + "_" + (Math.sin(Math.toRadians(alpha) * n) * 1) + "_" + (Math.cos(Math.toRadians(alpha) * n) * 1);
+			befehl = befehl + "," +names.get(conn) + "_" + conn + "_" + (Math.sin(Math.toRadians(alpha) * n) * 500) + "_" + (Math.cos(Math.toRadians(alpha) * n) * 500);
 			n++;
 		}
 		server.broadcast(befehl);
