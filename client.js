@@ -9,11 +9,27 @@
 			let befehle2 = a.split(":");
 			console.log(befehle2);
 			console.log(befehle2.length);
-			if(befehle2[0] == "[refreshPlayers]"){
-				//befehle2 = ;
-				//let befehle3 = befehle2[0];
-				refreshPlayers(befehle2[1].split(","));
-			}	
+			
+			switch(befehle2[0]) {
+				case "[refreshPlayers]":
+					refreshPlayers(befehle2[1].split(","));
+					break;
+				case "[getName]":
+					getName(befehle[1]);
+					break;
+				case "[setName]":
+					setName(befehle[1]);
+					break;
+				case "[setRole]":
+					setRole(befehle[1]);
+					break;
+				case "[setStatus]":
+					setStatus(befehle[1]);
+					break;
+				case "[setTimer]":
+					setTimer(befehle[1]);
+					break;
+			}
 		});	
 	};
 
@@ -30,6 +46,11 @@
 
 
 	};
+	
+	document.getElementById("name").onchange = function() {
+		let text = document.getElementById("name");
+		socket.send("[changeName]:" + text);
+	}
 	
 	let setName = function(name) {
 		let text = name;
@@ -59,4 +80,3 @@
 	let switchview = function() {
 		console.log("Hallo");
 	}
-
