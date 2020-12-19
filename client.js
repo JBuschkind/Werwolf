@@ -12,12 +12,19 @@
 			if(befehle2[0] == "[refreshPlayers]"){
 				//befehle2 = ;
 				//let befehle3 = befehle2[0];
-				refreshPlayers(befehle2.splice(0,1)[0].split(",").splice(0,1));
+				refreshPlayers(befehle2[1].split(","));
 			}	
 		});	
 	};
 
 	let refreshPlayers = function(players){
-		console.log("HIIII");
+		let text = "";
+		players.forEach(function(player){
+			if(player != ""){
+			text = text + "<p>" + player + "</p>";	
+			}
+		});	
+		console.log(text);
+		document.getElementById("playerspan").innerHTML = text;
 		
 	};	
