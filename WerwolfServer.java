@@ -291,7 +291,7 @@ public class WerwolfServer extends WebSocketServer {
 			}
 			}			
 		}
-		String[] keys = rollen.keySet();
+		Set<String> keys = rollen.keySet();
 		for(String key:keys){
 			for(WebSocket conn2 : rollen.get(key)){
 				conn2.send("[setRole]:" + key +";");
