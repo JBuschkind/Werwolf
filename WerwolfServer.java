@@ -279,7 +279,7 @@ public class WerwolfServer extends WebSocketServer {
 	//[startGame]:dorfbewohner_0,hexe_0,amor_0,seherin_0,leibwaechter_0,werwolf_0;
 	
 	public void startGame(WebSocket conn, String parameter) {
-		LinkedList<WebSocket> connectionsCopy = connections;
+		LinkedList<WebSocket> connectionsCopy = connections.clone();
 		Random rand = new Random();
 		for(String element: parameter.split(",")){
 			String[] element2 = element.split("_");
@@ -315,7 +315,7 @@ public class WerwolfServer extends WebSocketServer {
 	
 	public void refreshCircle(){
 		System.out.println(connections.size());
-		float alpha = 360/connections.size() + 1;
+		float alpha = 360/connections.size();
 		int n = 0;
 		String befehl = "[updateCircle]:";
 		for(WebSocket conn: connections){
