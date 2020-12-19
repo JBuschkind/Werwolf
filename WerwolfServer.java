@@ -250,7 +250,7 @@ public class WerwolfServer extends WebSocketServer {
 	public void game(WebSocket conn, String message){
 		switch(stage){
 			case "Dorfbewohner_Nacht":
-				server.broadcast("[displayText]:Das ganze Dorf schläft ein;");
+				server.broadcast("[displayText]:Das ganze Dorf schläft ein;[deactivateButton]:players;");
 				stage = "Amor_Setup";
 				game(conn, message);
 				break;
