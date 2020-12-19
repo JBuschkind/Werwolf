@@ -283,7 +283,7 @@ public class WerwolfServer extends WebSocketServer {
 		for(String element: parameter.split(",")){
 			String[] element2 = element.split("_");
 			rollen.put(element2[0],new LinkedList<WebSocket>());
-			if(Integer.parseInt(element2[1]>0)){
+			if(Integer.parseInt(element2[1])>0){
 			for(int i = 0; i < Integer.parseInt(element2[1]);i++){
 				int n = rand.nextInt(connectionsCopy.size());
 				rollen.get(element2[0]).add(connectionsCopy.get(n));
