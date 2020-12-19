@@ -45,6 +45,9 @@
 				case "[deactivateButton]":
 					deactivateButton(befehle2[1]);
 					break;
+				case "[reload]":
+					location.reload();
+					break;
 			}
 		});	
 	};

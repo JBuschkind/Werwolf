@@ -42,6 +42,8 @@ public class WerwolfServer extends WebSocketServer {
 	public static WebSocketServer server;
 	public static String Verliebte ="";
 	public static int nacht = 0;
+	public static HashMap<WebSocket,Integer> werwolfWahl = new HashMap<>();
+	public int werwolfTarget = -1;
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -285,10 +287,45 @@ public class WerwolfServer extends WebSocketServer {
 				}
 				break;
 			case "Werwolf_Setup":
-				server.broadcast("[displayText]:Die Werwölfe suchen sich ihr Opfer;");
+				if(rollen.get("werwolf").size()>0){
+					server.broadcast("[displayText]:Die Werwölfe suchen sich ihr Opfer;");
+					sendToWerwolf("[activateButton]:players;[activateButton]:buttonConfirm;");	
+					for(WebSocket wolf:rollen.get("werwolf")){
+						werwolfWahl.put(wolf,-1);
+					}	
+				}
+				stage = "Werwolf_Wahl";				
+				break;
+			case "Werwolf_Wahl"
+				if(rollen.get("werwolf").size()>0){
+					String[] message2 = (message.split(":"))[1].substring(1).split(",");
+					if(message2.length != 1){
+						conn.send("[displayText]:Bitte genau ein Ziel angeben;")"
+					}else{
+						werwolfWahl.put(conn,message2[0]);
+						boolean test = true;
+						int[] temp2 = werwolfWahl.values.toArray();
+						int temp = temp2[0];
+						for(int i:temp2){
+							if(i != temp || i == -1)
+								test=false;
+						}	
+						if(test){
+							werwolfTarget = temp;
+							stage="Werwolf_Entschluss";
+							game(conn,message);
+						}	
+					}	
+				}
+				break;
+			case "Werwolf_Entschluss":
 		}
 	}	
 	
+	public void death(WebSocket conn){
+		server.broadcast("[displayText]:"+names.get(conn)+" ist gestorben;");
+		conn.send("[reload];");
+	}
 	public void setName(WebSocket conn, String name){
 		names.remove(conn);
 		names.put(conn,name);
