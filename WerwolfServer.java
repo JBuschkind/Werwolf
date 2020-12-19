@@ -277,11 +277,15 @@ public class WerwolfServer extends WebSocketServer {
 					if(message2.length == 2){
 						Verliebte = message2[0] + ":" + message2[1];
 						server.broadcast("[displayText]:Amor traf seine Wahl;[deactivateButton]:buttonConfirm;[deactivateButton]:players;");
-						
+						stage = "Werwolf_Setup";
+						game(conn,message);
 					}else{
 						conn.send("[displayText]:Bitte 2 Personen auswählen;");
 					}	
-				}	
+				}
+				break;
+			case "Werwolf_Setup":
+				server.broadcast("[displayText]:Die Werwölfe suchen sich ihr Opfer;");
 		}
 	}	
 	
@@ -343,12 +347,35 @@ public class WerwolfServer extends WebSocketServer {
 		for(WebSocket conn: connections){
 			for (int id: ids.keySet()) {			
 				if(ids.get(id) == conn){
-					befehl = befehl + "," +names.get(conn) + "|" + id + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11));
+					befehl = befehl + "," +names.get(conn) + "|" + id + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11)) + "|dorfbewohner kreis.png";
 					n++;
 				}
 			}
 		}
 		server.broadcast(befehl);
+		
+		System.out.println(connections.size());
+		float alpha = 360/connections.size();
+		int n = 0;
+		String befehl = "[updateCircle]:";
+		for(WebSocket conn: connections){
+			for (int id: ids.keySet()) {			
+				if(ids.get(id) == conn){
+					if(rollen.get("werwolf").contains(conn)){
+						befehl = befehl + "," +names.get(conn) + "|" + id + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11)) + "|werwolf kreis.png" ;
+					}else{
+						befehl = befehl + "," +names.get(conn) + "|" + id + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11)) + "|dorfbewohner kreis.png";
+					}
+					n++;
+				}
+			}
+		}
+		
+	}	
+	
+	public void sendToWerwolf(String message){
+	for(WebSocket wolf:rollen.get("werwolf"))	
+		wolf.send(message);
 	}	
 }
 

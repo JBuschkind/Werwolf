@@ -145,11 +145,14 @@
 		});
 	}
 	
+	let werwolfChosen = function(target){
+		
+	}
 
 	let clickedPicture = function(event) {
 		if(event.currentTarget.getAttribute("test") == "true"){
 		}else{	
-			event.currentTarget.setAttribute("selected","");
+			event.currentTarget.toggleAttribute("selected");
 		}
 	}	
 
@@ -169,10 +172,10 @@
 			if(player != ""){
 				let player2 = player.split("|");
 				let text = document.getElementById("circle").innerHTML;
-				text = text + "<div class=\"playericon\" style=\"top:" + player2[2] + "cm; left:" + player2[3] + "cm;\"><img class=\"playerButton\" id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/dorfbewohner kreis.png\" onclick=\"clickedPicture(event);\"/><p id=\"imageTxt\">" + player2[0] + "</p></div>";
+				text = text + "<div class=\"playericon\" style=\"top:" + player2[2] + "cm; left:" + player2[3] + "cm;\"><img class=\"playerButton\" id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/"+player2[4]+"\" onclick=\"clickedPicture(event);\"/><p id=\"imageTxt\">" + player2[0] + "</p></div>";
 				document.getElementById("circle").innerHTML = text;
 			}	
-		});	
+		});		
 	}	
 
 

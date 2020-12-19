@@ -177,10 +177,11 @@ header > div{
 	/*max-width: 25%;*/
 }
 #playerpicture {
-		max-width: 100%;
+	max-width: 100%;
 }	
 
 .playerButton{
+	border-radius: 50%;	
 }
 
 .character {
@@ -218,4 +219,8 @@ header > div{
 
 p {
 	color: hsl(0,0%,80%);
+}
+
+[selected]{
+	box-shadow: 0 0 5px white;	
 }
