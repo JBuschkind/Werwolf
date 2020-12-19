@@ -31,11 +31,14 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 public class WerwolfServer extends WebSocketServer {
 
 	public static String phase = "";
+	public static String stage = "";
 	public HashMap<String,LinkedList<WebSocket>> rollen = new HashMap<>();
 	public static LinkedList<WebSocket> connections = new LinkedList<>();
 	public static HashMap<WebSocket,String> names = new HashMap<>();
 	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal","Johann","Torben","Emma","Manuel","Anni"};
 	public static WebSocketServer server;
+	public static String Verliebte ="";
+	public static int Nacht = 0;
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -85,8 +88,10 @@ public class WerwolfServer extends WebSocketServer {
 		switch(phase){
 		case "lobby":
 			lobby(conn, message);
-			
-			
+			break;
+		case "game":	
+			game(conn,message);
+			break;
 		}	
 	}
 
@@ -214,9 +219,6 @@ public class WerwolfServer extends WebSocketServer {
 		
 	} 
 	
-	public void start(){
-		
-	}
 	
 	public void lobby(WebSocket conn, String message){
 		String[] Befehl1 = message.split(";");
@@ -227,12 +229,41 @@ public class WerwolfServer extends WebSocketServer {
 				setName(conn,Befehl2[1]);	
 				break;
 			case "[startGame]":
-				startGame(Befehl2[1]);
+				startGame(conn,Befehl2[1]);
 				break;
 			}
 		}	
 	
 	}
+	
+	/*
+			if(rollen.get("amor").size()>0){
+						
+				}
+	*/			
+	
+	public void game(WebSocket conn, String message){
+		switch(stage){
+			case "Dorfbewohner_Nacht":
+				server.broadcast("[displayText]:Das ganze Dorf schläft ein;");
+				stage = "Amor_Setup";
+				game(conn, String message);
+				break;
+			case "Amor_Setup":
+				if(rollen.get("amor").size()>0 && nacht == 0){
+					server.broadcast("[displayText]:Amor erwacht, und sucht sich 2 Mitspieler aus;");
+					for(WebSocket amor:rollen.get("amor")){
+						server.send("[displayText]:Du wählst 2 Spieler aus, und bestätigst dann;[activateButton]:confirm;");						
+					}
+				}
+				stage="Amor_Auswahl";
+				break;
+			case "Amor_Auswahl":
+				if(rollen.get("amor").size()>0 && nacht == 0){
+					server.broadcast("[displayText]:Amor traf seine Wahl;");
+				}	
+		}
+	}	
 	
 	public void setName(WebSocket conn, String name){
 		names.remove(conn);
@@ -246,8 +277,7 @@ public class WerwolfServer extends WebSocketServer {
 	
 	//[startGame]:dorfbewohner_0,hexe_0,amor_0,seherin_0,leibwaechter_0,werwolf_0;
 	
-	public void startGame(String parameter) {
-		server.broadcast("[commenceGame]");
+	public void startGame(WebSocket conn, String parameter) {
 		LinkedList<WebSocket> connectionsCopy = connections;
 		Random rand = new Random();
 		for(String element: parameter.split(",")){
@@ -259,13 +289,18 @@ public class WerwolfServer extends WebSocketServer {
 				connectionsCopy.remove(n);
 			}		
 		}
-		System.out.println("HI");
+		server.broadcast("[commenceGame]");
+		phase = "game";
+		stage = "Dorfbewohner_Nacht"
+		nacht = 0;
+		game(conn,parameter);
+		//System.out.println("HI");
 		rand = null;
-		for (String name: rollen.keySet()){
+		/*for (String name: rollen.keySet()){
             String key = name.toString();
             String value = rollen.get(name).toString();  
             server.broadcast("[displayText]:" + key + " " + value + ";");  
-		} 
+		} */
 	}
 }
 

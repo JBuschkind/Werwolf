@@ -7,6 +7,8 @@ Server->Player:
 [setTimer] Sets the Time(/r)
 [commenceGame] Starts the game
 [displayText] Adds a line of text to the textbox
+[activateButton]
+[deactivateButton]
 
 Player->Server:
 [changeName] Changes the Players Name
