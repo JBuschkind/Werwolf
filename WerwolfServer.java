@@ -50,17 +50,16 @@ public class WerwolfServer extends WebSocketServer {
 	}
 
 	@Override
-	public void onOpen(WebSocket conn, ClientHandshake handshake) {
+	public void onOpen(WebSocket conn, ClientHandshake handshake) {		
+		connections.add(conn);	//Adds connection to List of all connections	
+		names.put(conn,getRandomName()); //Gives the Player a random Name	
 		String players = "";
 		for (WebSocket key: names.keySet()) {
 			players = players + "," + names.get(key);
 		}
-		conn.send("[init]Players:"+players); //This method sends a message to the new client
-		connections.add(conn);	//Adds connection to List of all connections	
-		names.put(conn,getRandomName()); //Gives the Player a random Name	
-		System.out.println(names.get(conn));
-		broadcast( "[addPlayer]:"+names.get(conn)  ); //This method sends a message to all clients connected
-		System.out.println("new connection to " + conn.getRemoteSocketAddress()); //+ "with the name" + names.get(conn));
+		//conn.send("[init]Players:"+players); //This method sends a message to the new client
+		broadcast( "[refreshPlayers]:"+players  ); //This method sends a message to all clients connected
+		System.out.println("new connection to " + conn.getRemoteSocketAddress() + " with the name " + names.get(conn)); //+ "with the name" + names.get(conn));
 		//System.out.println(connections);	//Debug Output
 		
 	}
@@ -68,8 +67,12 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
-		connections.remove(conn);	//Removes Connection from the List of all connections		
-		broadcast("[subPlayer]:"+names.get(conn));
+		connections.remove(conn);	//Removes Connection from the List of all connections	
+		String players = "";
+		for (WebSocket key: names.keySet()) {
+			players = players + "," + names.get(key);
+		}		
+		broadcast( "[refreshPlayers]:"+players  ); //This method sends a message to all clients connected
 		names.remove(conn);
 		//System.out.println(connections);	//Debug Output
 	}
