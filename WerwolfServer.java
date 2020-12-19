@@ -322,7 +322,7 @@ public class WerwolfServer extends WebSocketServer {
 		int n = 0;
 		String befehl = "[updateCircle]:";
 		for(WebSocket conn: connections){
-			befehl = befehl + "," +names.get(conn) + "|" + conn + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (12.0 + (Math.cos(Math.toRadians(alpha) * n) * 11));
+			befehl = befehl + "," +names.get(conn) + "|" + conn + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11));
 			n++;
 		}
 		server.broadcast(befehl);
