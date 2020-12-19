@@ -251,18 +251,20 @@ public class WerwolfServer extends WebSocketServer {
 		LinkedList<WebSocket> connectionsCopy = connections;
 		Random rand = new Random();
 		for(String element: parameter.split(",")){
-			for(String element2: element.split("_")){
-				rollen.put(element2[0],new LinkedList<WebSocket>());
-				for(int i = 0; i<element2[1];i++){
-					rollen.get(element2[0]).add(connectionsCopy.pop(rand.nextInt(connectionsCopy.length)));
-				}	
-			}	
+			String[] element2 = element.split("_");
+			rollen.put(element2[0],new LinkedList<WebSocket>());
+			for(int i = 0; i < Integer.parseInt(element2[1]);i++){
+				int n = rand.nextInt(connectionsCopy.size());
+				rollen.get(element2[0]).add(connectionsCopy.get(n));
+				connectionsCopy.remove(n);
+			}		
 		}
+		System.out.println("HI");
 		rand = null;
-		for (WebSocket name: Rollen.keySet()){
+		for (String name: rollen.keySet()){
             String key = name.toString();
-            String value = Rollen.get(name).toString();  
-            Sserver.broadcast("[displayText]:" + key + " " + value);  
+            String value = rollen.get(name).toString();  
+            server.broadcast("[displayText]:" + key + " " + value + ";");  
 		} 
 	}
 }
