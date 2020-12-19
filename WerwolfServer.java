@@ -34,7 +34,8 @@ public class WerwolfServer extends WebSocketServer {
 	public HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
 	public static LinkedList<WebSocket> connections = new LinkedList<>();
 	public static HashMap<WebSocket,String> names = new HashMap<>();
-	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal"};
+	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal","Johann","Torben","Emma","Manuel","Anni"};
+	public static WebSocketServer server;
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -113,7 +114,7 @@ public class WerwolfServer extends WebSocketServer {
 		phase = "lobby";
 		int port = 3001;
 		
-		WebSocketServer server = new WerwolfServer(new InetSocketAddress(host, port));
+		server = new WerwolfServer(new InetSocketAddress(host, port));
 		
 		SSLContext context = getContext();
 		if (context != null) {
@@ -223,7 +224,11 @@ public class WerwolfServer extends WebSocketServer {
 			String[] Befehl2 = element.split(":");
 			switch(Befehl2[0]){
 			case "[changeName]":
-				setName(conn,Befehl2[1]);				
+				setName(conn,Befehl2[1]);	
+				break;
+			case "[startGame]":
+				startGame(Befehl2[1]);
+				break;
 			}
 		}	
 	
@@ -237,5 +242,10 @@ public class WerwolfServer extends WebSocketServer {
 			players = players + "," + names.get(key);
 		}
 		broadcast( "[refreshPlayers]:"+players  );
+	}	
+	
+	public void startGame(String parameter) {
+		server.broadcast("[commenceGame]");
+		
 	}	
 }
