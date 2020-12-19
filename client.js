@@ -134,9 +134,10 @@
 		let message2 = message.split(",");
 		message2.forEach(function(player){
 			if(player != ""){
-				let player2 = player.split("_");
+				let player2 = player.split("|");
 				let text = document.getElementById("circle").innerHTML;
-				text = text + "<div class=\"playericon\" top=\"" + player2[2] + "cm\" left=\"" + player2[3] + "cm\"><img id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/dorfbewohner kreis.png\" onclick=\"test();\"/><p id=\"imageTxt\">" + player2[0] + "</p></div>";
+				console.log("<div class=\"playericon\" style=\"top:\"" + player2[2] + "cm\" left:\"" + player2[3] + "cm\"><img id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/dorfbewohner kreis.png\" onclick=\"test();\"/><p id=\"imageTxt\">" + player2[0] + "</p></div>");
+				text = text + "<div class=\"playericon\" style=\"top:\"" + player2[2] + "cm\" left:\"" + player2[3] + "cm\"><img id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/dorfbewohner kreis.png\" onclick=\"test();\"/><p id=\"imageTxt\">" + player2[0] + "</p></div>";
 				document.getElementById("circle").innerHTML = text;
 			}	
 		});	
