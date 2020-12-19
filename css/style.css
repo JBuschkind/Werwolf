@@ -168,7 +168,7 @@ header > div{
 	margin-top: 0px;
 }
 
-#visibleImg:hover, #imageTxt:hover {
+#visibleImg:hover {
 	filter: brightness(125%);
 }
 

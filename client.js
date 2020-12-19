@@ -1,4 +1,5 @@
 	const socket = new WebSocket("wss://busch.click:3001");
+	let clicked;
 	
 	socket.onmessage = function(event) {		
 		console.debug("WebSocket message received:", event);
