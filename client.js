@@ -107,6 +107,12 @@
 			$('#lobby').fadeOut();
 		});
 	}
+	
+	let test = function() {
+		
+	console.log(this);	
+		
+	}	
 
 	
 

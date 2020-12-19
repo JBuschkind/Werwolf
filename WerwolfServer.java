@@ -247,7 +247,7 @@ public class WerwolfServer extends WebSocketServer {
 			case "Dorfbewohner_Nacht":
 				server.broadcast("[displayText]:Das ganze Dorf schläft ein;");
 				stage = "Amor_Setup";
-				game(conn, String message);
+				game(conn, message);
 				break;
 			case "Amor_Setup":
 				if(rollen.get("amor").size()>0 && nacht == 0){
@@ -291,7 +291,7 @@ public class WerwolfServer extends WebSocketServer {
 		}
 		server.broadcast("[commenceGame]");
 		phase = "game";
-		stage = "Dorfbewohner_Nacht"
+		stage = "Dorfbewohner_Nacht";
 		nacht = 0;
 		game(conn,parameter);
 		//System.out.println("HI");
