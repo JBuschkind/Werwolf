@@ -149,10 +149,27 @@ header > div{
 #circle {
 	height: 80%;
 	contain: paint;
+	position: relative;
 }
 
 .playericon{
 	position: absolute;
+	top: 100px;
+	left: 100px;
+	text-align: center;
+}
+
+#visibleImg {
+	width: 102px;
+	height: 102px;
+}
+
+#imageTxt {
+	margin-top: 0px;
+}
+
+#visibleImg:hover, #imageTxt:hover {
+	filter: brightness(125%);
 }
 
 #picture {
