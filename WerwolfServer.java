@@ -302,6 +302,7 @@ public class WerwolfServer extends WebSocketServer {
 		phase = "game";
 		stage = "Dorfbewohner_Nacht";
 		nacht = 0;
+		refreshCircle();
 		game(conn,parameter);
 		//System.out.println("HI");
 		rand = null;
