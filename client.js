@@ -68,6 +68,7 @@
 	let setRole = function(role) {
 		let text = role;
 		document.getElementById("ingameRole").innerHTML = text;
+		document.getElementById("picture").innerHTML = "<img src=\"recources/pictures/" + role +".png\" />";
 	}
 	
 	let setStatus = function(curStatus) {

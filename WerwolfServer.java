@@ -38,7 +38,7 @@ public class WerwolfServer extends WebSocketServer {
 	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal","Johann","Torben","Emma","Manuel","Anni"};
 	public static WebSocketServer server;
 	public static String Verliebte ="";
-	public static int Nacht = 0;
+	public static int nacht = 0;
 	
 	public WerwolfServer(){
 		//phase = "";
