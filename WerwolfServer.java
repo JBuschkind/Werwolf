@@ -296,7 +296,7 @@ public class WerwolfServer extends WebSocketServer {
 				}
 				stage = "Werwolf_Wahl";				
 				break;
-			case "Werwolf_Wahl"
+			case "Werwolf_Wahl":
 				if(rollen.get("werwolf").size()>0){
 					String[] message2 = (message.split(":"))[1].substring(1).split(",");
 					if(message2.length != 1){
@@ -319,6 +319,8 @@ public class WerwolfServer extends WebSocketServer {
 				}
 				break;
 			case "Werwolf_Entschluss":
+				sendToWerwolf("[displayText]:Ihr habt " + names.get(ids.get(werwolfTarget)) + " gewählt;");
+				stage="Leibwächter_Setup";
 		}
 	}	
 	
