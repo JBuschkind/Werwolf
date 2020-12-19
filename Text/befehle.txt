@@ -5,6 +5,7 @@ Server->Player:
 [setRole] Sets the role
 [setStatus] Sets the status
 [setTimer] Sets the Time(/r)
+[commenceGame] Starts the game
 
 Player->Server:
 [changeName] Changes the Players Name
@@ -16,3 +17,4 @@ Bsp:
 	[setRole]:Werwolf;
 	[setStatus]:Am Leben;
 	[setTimer]:Nacht;
+	[commenceGame]:Ja;

@@ -29,6 +29,9 @@
 				case "[setTimer]":
 					setTimer(befehle[1]);
 					break;
+				case "[commenceGame]":
+					forceSwitch();
+					break;
 			}
 		});	
 	};
