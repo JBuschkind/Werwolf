@@ -288,6 +288,7 @@ public class WerwolfServer extends WebSocketServer {
 						conn.send("[displayText]:Bitte 2 Personen auswählen;");
 					}	
 				}
+				stage="Werwolf_Setup";
 				break;
 			case "Werwolf_Setup":
 				if(rollen.get("werwolf").size()>0){
