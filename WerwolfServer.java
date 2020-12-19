@@ -370,6 +370,7 @@ public class WerwolfServer extends WebSocketServer {
 				}
 			}
 		}
+		sendToWerwolf(befehl);
 		
 	}	
 	
