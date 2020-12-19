@@ -2,16 +2,22 @@
 	
 	socket.onmessage = function(event) {
 		console.debug("WebSocket message received:", event);
-		const befehle = event.split(";");
-		for each (a in befehle){
-			const befehle2 = a.split(":")
-			if(befehle2[0] == "[refreshPLayers]"){
-				refreshPlayers(
+		//const input = "" + event;
+		let befehle = event.data.split(";");
+		console.log(befehle);
+		befehle.forEach(function(a){ 
+			let befehle2 = a.split(":");
+			console.log(befehle2);
+			console.log(befehle2.length);
+			if(befehle2[0] == "[refreshPlayers]"){
+				//befehle2 = ;
+				//let befehle3 = befehle2[0];
+				refreshPlayers(befehle2.splice(0,1)[0].split(",").splice(0,1));
 			}	
-		}	
+		});	
 	};
 
 	let refreshPlayers = function(players){
-		
+		console.log("HIIII");
 		
 	};	
