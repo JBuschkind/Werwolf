@@ -47,8 +47,8 @@
 
 	};
 	
-	document.getElementById("name").onchange = function() {
-		let text = document.getElementById("name");
+	let getName = function() {
+		let text = document.getElementById("name").value;
 		socket.send("[changeName]:" + text);
 	}
 	
@@ -70,6 +70,13 @@
 	let setTimer = function(timer) {
 		let text = timer;
 		document.getElementById("ingameTimer").innerHTML = text;
+	}
+	
+	let updateTextbox = function(txt) {
+		let text = document.getElementById("textfield").value;
+		
+		text = text + "<p>" + txt + "</p>";
+		document.getElementById("textfield").innerHTML = text;
 	}
 	
 	let switchview = function() {
