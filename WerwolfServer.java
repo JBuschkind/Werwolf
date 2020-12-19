@@ -30,7 +30,9 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 
 
 public class WerwolfServer extends WebSocketServer {
-
+	
+	public static index = 0;
+	public static HashMap<Integer,WebSocket> ids= new HashMap<>();
 	public static String phase = "";
 	public static String stage = "";
 	public HashMap<String,LinkedList<WebSocket>> rollen = new HashMap<>();
@@ -57,6 +59,8 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {	
 		if(phase=="lobby"){
+		ids.put(index,conn);
+		index++;
 		connections.add(conn);	//Adds connection to List of all connections	
 		names.put(conn,getRandomName()); //Gives the Player a random Name	
 		String players = "";
@@ -76,6 +80,10 @@ public class WerwolfServer extends WebSocketServer {
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println("closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
+		for (int id: ids.keySet()) {			
+			if(ids.get(id) == conn)
+				ids.remove(id);
+		}
 		connections.remove(conn);	//Removes Connection from the List of all connections	
 		String players = "";
 		for (WebSocket key: names.keySet()) {
@@ -269,6 +277,7 @@ public class WerwolfServer extends WebSocketServer {
 					if(message2.length == 2){
 						Verliebte = message2[0] + ":" + message2[1];
 						server.broadcast("[displayText]:Amor traf seine Wahl;[deactivateButton]:buttonConfirm;[deactivateButton]:players;");
+						
 					}else{
 						conn.send("[displayText]:Bitte 2 Personen auswählen;");
 					}	
@@ -332,8 +341,12 @@ public class WerwolfServer extends WebSocketServer {
 		int n = 0;
 		String befehl = "[updateCircle]:";
 		for(WebSocket conn: connections){
-			befehl = befehl + "," +names.get(conn) + "|" + conn + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11));
-			n++;
+			for (int id: ids.keySet()) {			
+				if(ids.get(id) == conn){
+					befehl = befehl + "," +names.get(conn) + "|" + id + "|" + (8.0 + (Math.sin(Math.toRadians(alpha) * n) * 7)) + "|" + (17.0 + (Math.cos(Math.toRadians(alpha) * n) * 11));
+					n++;
+				}
+			}
 		}
 		server.broadcast(befehl);
 	}	

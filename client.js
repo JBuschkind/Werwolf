@@ -159,7 +159,7 @@
 			names = names + "," + document.querySelector("[selected]").name;
 			document.querySelector("[selected]").removeAttribute("selected");
 		}
-		socket.send("[input]:" + 
+		socket.send("[input]:" + names);
 	}
 	
 	let updateCircle = function(message) {
