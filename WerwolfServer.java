@@ -390,11 +390,15 @@ public class WerwolfServer extends WebSocketServer {
 	public void winTest(){
 		if(rollen.get("werwolf").size() == 0 ){
 			server.broadcast("[displayText]:Die Dorfbewoner haben gewonnen;");
+			try{
 			Thread.sleep(10000);
+			}catch(Exception e){}
 		server.broadcast("[reload];");
 		}else if( rollen.get("dorfbewohner").size() == 0 && rollen.get("hexe").size() == 0 && rollen.get("leibwaechter").size() == 0 && rollen.get("seherin").size() == 0 && rollen.get("amor").size() == 0){
 			server.broadcast("[displayText]:Die Werwölfe haben gewonnen;");
+			try{
 			Thread.sleep(10000);
+			}catch(Exception e){}
 			server.broadcast("[reload];");
 		}
 		
