@@ -339,9 +339,9 @@ public class WerwolfServer extends WebSocketServer {
 				}else{
 					stage="Tag_Setup";
 					game(conn,message);
-				stage="Leibwächter_Wahl";
+				stage="Leibwaechter_Wahl";
 				break;
-			case "Leibwächter_Wahl":
+			case "Leibwaechter_Wahl":
 				if(rollen.get("leibwaechter").size()>0){
 					String[] message2 = (message.split(":"))[1].substring(1).split(",");
 					if(message2.length != 1){
