@@ -339,6 +339,7 @@ public class WerwolfServer extends WebSocketServer {
 				}else{
 					stage="Tag_Setup";
 					game(conn,message);
+				}	
 				stage="Leibwaechter_Wahl";
 				break;
 			case "Leibwaechter_Wahl":
