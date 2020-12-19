@@ -81,7 +81,7 @@
 	}
 	
 	let updateTextbox = function(txt) {
-		let text = document.getElementById("textfield").value;
+		let text = document.getElementById("textfield").innerHTML;
 		console.log(txt);
 		text = text + "<p>" + txt + "</p>";
 		console.log(text);
@@ -106,6 +106,14 @@
 		$(document).ready(function(){
 			$('#lobby').fadeOut();
 		});
+	}
+	
+	let saveClicked = function() {
+		
+	}
+	
+	let getClicked = function() {
+		
 	}
 
 	
