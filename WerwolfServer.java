@@ -260,7 +260,7 @@ public class WerwolfServer extends WebSocketServer {
 			}		
 		}
 		rand = null;
-		for (WebSocket name: rollen.keySet()){
+		for (String name: rollen.keySet()){
             String key = name.toString();
             String value = rollen.get(name).toString();  
             Sserver.broadcast("[displayText]:" + key + " " + value);  
