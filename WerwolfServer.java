@@ -391,6 +391,8 @@ public class WerwolfServer extends WebSocketServer {
 				}
 				server.broadcast("[displayText]:"+names.get(maxEntry)+" ist gestorben;");
 				death(maxEntry);
+				stage="Dorfbewohner_Nacht";
+				game(conn,message);
 		}
 	}	
 	
@@ -414,6 +416,7 @@ public class WerwolfServer extends WebSocketServer {
 	public void death(WebSocket conn){
 		server.broadcast("[displayText]:"+names.get(conn)+" ist gestorben;");
 		conn.send("[reload];");
+		refreshCircle();
 	}
 	public void setName(WebSocket conn, String name){
 		names.remove(conn);
