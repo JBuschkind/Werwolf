@@ -55,7 +55,8 @@ public class WerwolfServer extends WebSocketServer {
 	}
 
 	@Override
-	public void onOpen(WebSocket conn, ClientHandshake handshake) {		
+	public void onOpen(WebSocket conn, ClientHandshake handshake) {	
+		if(phase="lobby"){
 		connections.add(conn);	//Adds connection to List of all connections	
 		names.put(conn,getRandomName()); //Gives the Player a random Name	
 		String players = "";
@@ -66,7 +67,10 @@ public class WerwolfServer extends WebSocketServer {
 		broadcast( "[refreshPlayers]:"+players  ); //This method sends a message to all clients connected
 		System.out.println("new connection to " + conn.getRemoteSocketAddress() + " with the name " + names.get(conn)); //+ "with the name" + names.get(conn));
 		//System.out.println(connections);	//Debug Output
-		
+		}else{
+			conn.send("[commenceGame]");
+			refreshCircle();
+		}
 	}
 
 	@Override
