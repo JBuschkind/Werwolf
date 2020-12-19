@@ -39,10 +39,27 @@
 				case "[updateCircle]":
 					updateCircle(befehle2[1]);
 					break;
+				case "[activateButton]":
+					activateButton(befehle2[1]);
+					break;
+				case "[deactivateButton]":
+					deactivateButton(befehle2[1]);
+					break;
 			}
 		});	
 	};
 
+	let activateButton = function(button){
+		document.getElementById(button).disabled = false;
+		document.getElementById(button).style = "";
+	}
+	
+	let deactivateButton = function(button){
+		document.getElementById(button).disabled = true;
+		document.getElementById(button).style = "background-color: gray;";
+		
+	}
+	
 	let refreshPlayers = function(players){
 		let text = "";
 		players.forEach(function(player){
