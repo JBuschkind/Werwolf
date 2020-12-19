@@ -357,7 +357,7 @@ public class WerwolfServer extends WebSocketServer {
 		System.out.println(connections.size());
 
 		n = 0;
-		String befehl = "[updateCircle]:";
+		befehl = "[updateCircle]:";
 		for(WebSocket conn: connections){
 			for (int id: ids.keySet()) {			
 				if(ids.get(id) == conn){
