@@ -31,7 +31,7 @@ import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 public class WerwolfServer extends WebSocketServer {
 
 	public static String phase = "";
-	public HashMap<String,LinkedList<WebSocket>> Rollen = new HashMap<>();
+	public HashMap<String,LinkedList<WebSocket>> rollen = new HashMap<>();
 	public static LinkedList<WebSocket> connections = new LinkedList<>();
 	public static HashMap<WebSocket,String> names = new HashMap<>();
 	public static String defaultNames[] = new String[]{"Anna","Bob","Manfred","Fritz","TinaToastbrot","Alice","MaxMustermann","Pascal","Johann","Torben","Emma","Manuel","Anni"};
@@ -244,8 +244,49 @@ public class WerwolfServer extends WebSocketServer {
 		broadcast( "[refreshPlayers]:"+players  );
 	}	
 	
+	//[startGame]:dorfbewohner_0,hexe_0,amor_0,seherin_0,leibwaechter_0,werwolf_0;
+	
 	public void startGame(String parameter) {
 		server.broadcast("[commenceGame]");
-		
-	}	
+		LinkedList<WebSocket> connectionsCopy = connections;
+		Random rand = new Random();
+		for(String element: parameter.split(",")){
+			for(String element2: element.split("_")){
+				rollen.put(element2[0],new LinkedList<WebSocket>);
+				for(int i = 0; i<element2[1];i++){
+					rollen.get(element2[0]).add(connectionsCopy.pop(rand.nextInt(connectionsCopy.length)));
+				}	
+			}	
+		}
+		rand = null;
+		for (WebSocket name: Rollen.keySet()){
+            String key = name.toString();
+            String value = Rollen.get(name).toString();  
+            Sserver.broadcast("[displayText]:" + key + " " + value);  
+		} 
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
