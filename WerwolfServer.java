@@ -45,6 +45,7 @@ public class WerwolfServer extends WebSocketServer {
 	public static HashMap<WebSocket,Integer> werwolfWahl = new HashMap<>();
 	public int werwolfTarget = -1;
 	public static HashMap<WebSocket,Integer> stimmen = new HashMap<>();
+	public static int i = 0;
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -359,7 +360,7 @@ public class WerwolfServer extends WebSocketServer {
 				for(WebSocket sock:connections){
 				stimmen.put(sock,0); 
 				}
-				int i = 0;
+				i = 0;
 				break;
 			case "Tag_Wahl":
 				String[] message2 = (message.split(":"))[1].substring(1).split(",");
