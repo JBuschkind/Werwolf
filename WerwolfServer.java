@@ -367,7 +367,7 @@ public class WerwolfServer extends WebSocketServer {
 				for(WebSocket sock:connections){
 				stimmen.put(sock,0); 
 				}
-				i = 0;
+				i = 1;
 				break;
 			case "Tag_Wahl":
 				String[] message2 = (message.split(":"))[1].substring(1).split(",");
