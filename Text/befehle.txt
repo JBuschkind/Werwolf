@@ -9,6 +9,7 @@ Server->Player:
 
 Player->Server:
 [changeName] Changes the Players Name
+[startGame] Server starts the Game
 
 Bsp:
 	[refreshPlayers]:,Manfred,Anna,TinaToastbrot;
