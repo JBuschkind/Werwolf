@@ -50,13 +50,21 @@
 	};
 
 	let activateButton = function(button){
+		if(button == "players"){
+			document.getElementsByClassName("playerButton").disabled = false;
+		}else{	
 		document.getElementById(button).disabled = false;
 		document.getElementById(button).style = "";
+		}
 	}
 	
 	let deactivateButton = function(button){
+		if(button == "players"){
+			document.getElementsByClassName("playerButton").disabled = false;
+		}else{
 		document.getElementById(button).disabled = true;
 		document.getElementById(button).style = "background-color: gray;";
+		}
 		
 	}
 	
@@ -132,17 +140,14 @@
 	}
 	
 
-	let test = function() {
-		
-	console.log(this);	
-		
+	let clickedPicture = function(event) {
+		if(event.currentTarget.disabled){
+		}else{	
+		console.log(event.currentTarget.name);	
+		}
 	}	
 
 	let saveClicked = function() {
-		
-	}
-	
-	let getClicked = function() {
 		
 	}
 	
@@ -153,7 +158,7 @@
 			if(player != ""){
 				let player2 = player.split("|");
 				let text = document.getElementById("circle").innerHTML;
-				text = text + "<div class=\"playericon\" style=\"top:" + player2[2] + "cm; left:" + player2[3] + "cm;\"><img id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/dorfbewohner kreis.png\" onclick=\"test();\"/><p id=\"imageTxt\">" + player2[0] + "</p></div>";
+				text = text + "<div class=\"playericon\" style=\"top:" + player2[2] + "cm; left:" + player2[3] + "cm;\"><img class=\"playerButton\" id=\"visibleImg\" name=\"" + player2[1] + "\" src=\"recources/pictures/dorfbewohner kreis.png\" onclick=\"clickedPicture(event);\" disable/><p id=\"imageTxt\">" + player2[0] + "</p></div>";
 				document.getElementById("circle").innerHTML = text;
 			}	
 		});	
