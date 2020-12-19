@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="client.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- <script src="changeSetting.js"></script> -->
 		<style>
 			input::-webkit-outer-spin-button,
 			input::-webkit-inner-spin-button {
@@ -23,7 +24,7 @@
 			<header>
 				<div id ="nameselect">
 					<p for="name" class="bold">Name:</p>
-					<input type="text" id="name" onchange="changeName()">
+					<input type="text" id="name" onchange="setName()">
 				</div>
 			</header>
 			<main>
@@ -96,7 +97,7 @@
 						</div>
 					</div>	
 					<div id="text-field" style="overflow-y:scroll;">
-						<span id="textfield"><p class="textfield">Hier wird der Text stehen</p></span>
+						<span><p class="textfield">Hier wird der Text stehen</p></span>
 					</div>
 				</div>
 				<div class="character">
