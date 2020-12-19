@@ -56,7 +56,7 @@ public class WerwolfServer extends WebSocketServer {
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {	
-		if(phase="lobby"){
+		if(phase=="lobby"){
 		connections.add(conn);	//Adds connection to List of all connections	
 		names.put(conn,getRandomName()); //Gives the Player a random Name	
 		String players = "";
