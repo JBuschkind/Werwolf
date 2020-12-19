@@ -94,6 +94,7 @@ public class WerwolfServer extends WebSocketServer {
 		}		
 		broadcast( "[refreshPlayers]:"+players  ); //This method sends a message to all clients connected
 		names.remove(conn);
+		winTest();
 		//System.out.println(connections);	//Debug Output
 	}
 
@@ -376,7 +377,7 @@ public class WerwolfServer extends WebSocketServer {
 				break;
 			case "Tag_Abend":
 				WebSocket maxEntry = null;
-				for (stimme : stimmen.keySet()
+				for (WebSocket stimme : stimmen.keySet()){
 					if(maxEntry == null || stimmen.get(stimme) > stimmen.get(maxEntry))
 						maxEntry = stimme;
 				}
@@ -385,7 +386,7 @@ public class WerwolfServer extends WebSocketServer {
 		}
 	}	
 	
-	public void win(){
+	public void winTest(){
 		if(rollen.get("werwolf").size() == 0 || ){
 			server.broadcast("[displayText]:Die Dorfbewoner haben gewonnen;");
 		}else if( rollen.get("dorfbewohner").size() == 0 && rollen.get("hexe").size() == 0 && rollen.get("leibwaechter").size() == 0 && rollen.get("seherin").size() == 0 && rollen.get("amor").size() == 0){
@@ -394,6 +395,7 @@ public class WerwolfServer extends WebSocketServer {
 		Thread.sleep(10000);
 		server.broadcast("[reload];");
 	}	
+	
 	public void death(WebSocket conn){
 		server.broadcast("[displayText]:"+names.get(conn)+" ist gestorben;");
 		conn.send("[reload];");
