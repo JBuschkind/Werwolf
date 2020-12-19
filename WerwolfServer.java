@@ -44,6 +44,7 @@ public class WerwolfServer extends WebSocketServer {
 	public static int nacht = 0;
 	public static HashMap<WebSocket,Integer> werwolfWahl = new HashMap<>();
 	public int werwolfTarget = -1;
+	public static Hashmap<WebSocket,int> stimmen = new HashMap<>();
 	
 	public WerwolfServer(){
 		//phase = "";
@@ -320,11 +321,79 @@ public class WerwolfServer extends WebSocketServer {
 				}
 				break;
 			case "Werwolf_Entschluss":
-				sendToWerwolf("[displayText]:Ihr habt " + names.get(ids.get(werwolfTarget)) + " gewählt;");
+				if(rollen.get("werwolf").size()>0){
+				sendToWerwolf("[displayText]:Ihr habt " + names.get(ids.get(werwolfTarget)) + " gewählt;[deactivateButton]:players;[deactivateButton]:buttonConfirm;");
+				}
 				stage="Leibwächter_Setup";
+				game(conn,message);
+			case "Leibwächter_Setup":
+				if(rollen.get("leibwaechter").size()>0){
+				server.broadcast("[displayText]:Der Leibwächter beschützt ein Haus;");
+				rollen.get("leibwaechter")[0].send("[displayText]:Such eine Person zum beschützen aus;[activateButton]:players;[activateButton]:buttonConfirm;");
+				}
+				stage="Leibwächter_Wahl";
+				break;
+			case "Leibwaechter_Wahl":
+				if(rollen.get("leibwaechter").size()>0){
+					String[] message2 = (message.split(":"))[1].substring(1).split(",");
+					if(message2.length != 1){
+						conn.send("[displayText]:Bitte genau ein Ziel angeben;");
+					}else{
+						if(werwolfTarget == Integer.parseInt(message2[0])){
+								werwolfTarget = -1;
+						}
+					conn.send("[deactivateButton]:players;[deactivateButton]:buttonConfirm;");
+					}	
+					
+				}
+				stage = "Tag_Setup";
+			case "Tag_Setup":
+				if(werwolfTarget != -1){
+					death(ids.get(werwolfTarget));
+				}else{
+					server.broadcast("[displayText]:Niemand ist gestorben;");
+				}
+				server.broadcast("[displayText]:Wählt wen ihr erhängen wollt;[activateButton]:players;[activateButton]:buttonConfirm;"/*[activateButton]:buttonSkip;"*/);
+				stage="Tag_Wahl";
+				for(WebSocket sock:connections){
+				stimmen.put(sock,0); 
+				}
+				int i = 0;
+				break;
+			case "Tag_Wahl":
+				String[] message2 = (message.split(":"))[1].substring(1).split(",");
+					if(message2.length != 1){
+						conn.send("[displayText]:Bitte genau ein Ziel angeben;");
+					}else{
+						i++;
+						stimmen.put(ids.get(Integer.parseInt(message2[0])),stimmen.get(ids.get(Integer.parseInt(message2[0])))+1);
+						conn.send("[displayText]:Du stimmtest für " +names.get(ids.get(Integer.parseInt(mesage2[0]))) +";[deactivateButton]:players;[deactivateButton]:buttonConfirm;");
+						if(i==connections.size()){
+							stage="Tag_Abend";
+							game(conn,message);
+						}	
+					}
+				break;
+			case "Tag_Abend":
+				WebSocket maxEntry = null;
+				for (stimme : stimmen.keySet()
+					if(maxEntry == null || stimmen.get(stimme) > stimmen.get(maxEntry))
+						maxEntry = stimme;
+				}
+				server.broadcast("[displayText]:"+names.get(maxEntry)+" ist gestorben;");
+				death(maxEntry);
 		}
 	}	
 	
+	public void win(){
+		if(rollen.get("werwolf").size() == 0 || ){
+			server.broadcast("[displayText]:Die Dorfbewoner haben gewonnen;");
+		}else if( rollen.get("dorfbewohner").size() == 0 && rollen.get("hexe").size() == 0 && rollen.get("leibwaechter").size() == 0 && rollen.get("seherin").size() == 0 && rollen.get("amor").size() == 0){
+			server.broadcast("[displayText]:Die Werwölfe haben gewonnen;");
+		}
+		Thread.sleep(10000);
+		server.broadcast("[reload];");
+	}	
 	public void death(WebSocket conn){
 		server.broadcast("[displayText]:"+names.get(conn)+" ist gestorben;");
 		conn.send("[reload];");
